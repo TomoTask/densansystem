@@ -1130,7 +1130,7 @@ async function editTask(id) {
   try {
     const t = await apiGet('getLogById', { id: tid, userEmail: S.currentUser.email });
     if (t) {
-      if (!t.isOwner) { showToast('編集権限なし', 'error'); return; }
+      if (!t.isOwner) { viewTask(tid); return; }
       S.editingId = tid;
       document.getElementById('edit-id').value = tid;
       if (t.date) document.getElementById('input-date').value = new Date(t.date).toISOString().split('T')[0];
