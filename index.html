@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <style>
-:root{--primary:#3b82f6;--primary-hover:#2563eb;--primary-light:#eff6ff;--primary-muted:#dbeafe;--success:#10b981;--success-light:#ecfdf5;--warning:#f59e0b;--warning-light:#fffbeb;--danger:#ef4444;--danger-light:#fef2f2;--purple:#8b5cf6;--purple-light:#f5f3ff;--cyan:#06b6d4;--cyan-light:#ecfeff;--slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;--slate-300:#cbd5e1;--slate-400:#94a3b8;--slate-500:#64748b;--slate-600:#475569;--slate-700:#334155;--slate-800:#1e293b;--slate-900:#0f172a;--radius-sm:6px;--radius-md:8px;--radius-lg:12px;--shadow-sm:0 1px 2px 0 rgb(0 0 0 / 0.05);--shadow-md:0 4px 6px -1px rgb(0 0 0 / 0.1);--transition:150ms cubic-bezier(0.4, 0, 0.2, 1)}
+:root{--primary:#3b82f6;--primary-hover:#2563eb;--primary-light:#eff6ff;--primary-muted:#dbeafe;--success:#10b981;--success-light:#ecfdf5;--warning:#f59e0b;--warning-light:#fffbeb;--danger:#ef4444;--danger-light:#fef2f2;--purple:#8b5cf6;--purple-light:#f5f3ff;--cyan:#06b6d4;--cyan-light:#ecfeff;--green:#22c55e;--green-light:#f0fdf4;--slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;--slate-300:#cbd5e1;--slate-400:#94a3b8;--slate-500:#64748b;--slate-600:#475569;--slate-700:#334155;--slate-800:#1e293b;--slate-900:#0f172a;--radius-sm:6px;--radius-md:8px;--radius-lg:12px;--shadow-sm:0 1px 2px 0 rgb(0 0 0 / 0.05);--shadow-md:0 4px 6px -1px rgb(0 0 0 / 0.1);--transition:150ms cubic-bezier(0.4, 0, 0.2, 1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-behavior:smooth;height:100%}
 body{font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;line-height:1.6;color:var(--slate-800);background:var(--slate-100);min-height:100%;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-y:auto}
@@ -99,12 +99,16 @@ body{font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,sans-serif;font
 .section-icon .material-icons-round{font-size:16px;color:white}
 .section.important .section-icon{background:var(--danger)}
 .section.inprogress .section-icon{background:var(--warning)}
+.section.pending .section-icon{background:var(--green)}
 .section.assigned .section-icon{background:var(--cyan)}
+.section.myrequests .section-icon{background:var(--purple)}
 .section.notstarted .section-icon{background:var(--primary)}
 .section.onhold .section-icon{background:var(--slate-500)}
 .section-title{font-size:13px;font-weight:600;color:var(--slate-800)}
 .section-count{background:var(--slate-200);color:var(--slate-600);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;min-width:20px;text-align:center}
 .section.important .section-count{background:var(--danger);color:white}
+.section.pending .section-count{background:var(--green);color:white}
+.section.myrequests .section-count{background:var(--purple);color:white}
 .section.assigned .section-count.has-unread{background:var(--danger);color:white;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}
 .section-toggle{color:var(--slate-400);transition:transform var(--transition)}
@@ -155,12 +159,13 @@ body{font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,sans-serif;font
 .task-row-assignee .material-icons-round{font-size:12px}
 .task-row-assigner{font-size:11px;color:var(--cyan);display:flex;align-items:center;gap:4px;padding-left:10px}
 .task-row-assigner .material-icons-round{font-size:14px}
+.task-row-owner{font-size:10px;color:var(--purple);background:var(--purple-light);padding:2px 6px;border-radius:4px;display:inline-flex;align-items:center;gap:3px;padding-left:10px}
+.task-row-owner .material-icons-round{font-size:12px}
 .task-assign-btn{background:var(--cyan);color:white;border:none;padding:5px 10px;border-radius:14px;font-size:10px;font-weight:600;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:3px;transition:all var(--transition);flex-shrink:0}
-.task-assign-btn:hover{background:#0891b2;transform:scale(1.02)}
+.task-assign-btn:hover{transform:scale(1.02)}
 .task-assign-btn .material-icons-round{font-size:12px}
 .task-row.unread-assignment{background:linear-gradient(135deg,var(--cyan-light) 0%,white 100%);border-color:var(--cyan)}
 .task-row .unread-badge{position:absolute;top:8px;right:8px;background:var(--danger);color:white;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;z-index:1}
-.task-row-owner{font-size:10px;color:var(--purple);background:var(--purple-light);padding:2px 6px;border-radius:4px;display:inline-flex;align-items:center;gap:3px}
 .task-row-private{font-size:10px;color:var(--slate-600);background:var(--slate-200);padding:2px 6px;border-radius:4px;display:inline-flex;align-items:center;gap:3px}
 .empty-state{text-align:center;padding:24px 16px;color:var(--slate-400)}
 .empty-state .material-icons-round{font-size:32px;margin-bottom:8px;opacity:0.5}
@@ -403,7 +408,9 @@ textarea.form-control{min-height:80px;resize:vertical}
         </div>
         <div class="section important" id="section-important"><div class="section-header" onclick="toggleSection('important')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">priority_high</span></div><span class="section-title">重要・緊急</span><span class="section-count" id="important-count">0</span></div><span class="material-icons-round section-toggle" id="important-toggle">expand_more</span></div><div class="section-content" id="important-content"><div class="section-list" id="important-list"></div><div class="section-footer" id="important-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('important')">すべて表示</button></div></div></div>
         <div class="section inprogress" id="section-inprogress"><div class="section-header" onclick="toggleSection('inprogress')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">hourglass_top</span></div><span class="section-title">対応中</span><span class="section-count" id="inprogress-count">0</span></div><span class="material-icons-round section-toggle" id="inprogress-toggle">expand_more</span></div><div class="section-content" id="inprogress-content"><div class="section-list" id="inprogress-list"></div><div class="section-footer" id="inprogress-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('inprogress')">すべて表示</button></div></div></div>
+        <div class="section pending" id="section-pending"><div class="section-header" onclick="toggleSection('pending')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">inbox</span></div><span class="section-title">対応待ち</span><span class="section-count" id="pending-count">0</span></div><span class="material-icons-round section-toggle" id="pending-toggle">expand_more</span></div><div class="section-content" id="pending-content"><div class="section-list" id="pending-list"></div><div class="section-footer" id="pending-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('pending')">すべて表示</button></div></div></div>
         <div class="section assigned" id="section-assigned"><div class="section-header" onclick="toggleSection('assigned')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">move_to_inbox</span></div><span class="section-title">依頼されたタスク</span><span class="section-count" id="assigned-count">0</span></div><span class="material-icons-round section-toggle" id="assigned-toggle">expand_more</span></div><div class="section-content" id="assigned-content"><div class="section-list" id="assigned-list"></div><div class="section-footer" id="assigned-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('assigned')">すべて表示</button></div></div></div>
+        <div class="section myrequests" id="section-myrequests"><div class="section-header" onclick="toggleSection('myrequests')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">send</span></div><span class="section-title">依頼したタスク</span><span class="section-count" id="myrequests-count">0</span></div><span class="material-icons-round section-toggle" id="myrequests-toggle">expand_more</span></div><div class="section-content" id="myrequests-content"><div class="section-list" id="myrequests-list"></div><div class="section-footer" id="myrequests-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('myrequests')">すべて表示</button></div></div></div>
         <div class="section notstarted" id="section-notstarted"><div class="section-header" onclick="toggleSection('notstarted')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">pending_actions</span></div><span class="section-title">未着手タスク</span><span class="section-count" id="notstarted-count">0</span></div><span class="material-icons-round section-toggle" id="notstarted-toggle">expand_more</span></div><div class="section-content" id="notstarted-content"><div class="section-list" id="notstarted-list"></div><div class="section-footer" id="notstarted-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('notstarted')">すべて表示</button></div></div></div>
         <div class="section onhold" id="section-onhold"><div class="section-header" onclick="toggleSection('onhold')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">pause_circle</span></div><span class="section-title">保留</span><span class="section-count" id="onhold-count">0</span></div><span class="material-icons-round section-toggle" id="onhold-toggle">expand_more</span></div><div class="section-content" id="onhold-content"><div class="section-list" id="onhold-list"></div><div class="section-footer" id="onhold-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('onhold')">すべて表示</button></div></div></div>
       </div>
@@ -501,12 +508,12 @@ textarea.form-control{min-height:80px;resize:vertical}
   <div class="toast" id="toast"></div>
   <script>
 // ============================================
-// [ADDED] API設定 - デプロイ後に変更してください
+// API設定
 // ============================================
 const API_BASE_URL = 'https://script.google.com/macros/s/AKfycby_aTSNWk067_HVpGGYgfo1alVC0osGx0jrKLPtb10Qn-irXen8k3u-ErsbU2cRIaWJGw/exec';
 const API_KEY = 'densan_apikey_20260127';
 
-// [ADDED] API呼び出しヘルパー関数
+// API呼び出しヘルパー関数
 async function apiGet(action, params = {}) {
   const url = new URL(API_BASE_URL);
   url.searchParams.set('action', action);
@@ -549,11 +556,40 @@ const S = {
   masterData: null, currentUser: null, allUsers: [], editingId: null, toastTimer: null,
   quickMemoOpen: false, lastListState: null, isAppInitialized: false,
   quickSubmitting: false, detailSubmitting: false,
-  sectionStates: { important: false, inprogress: false, assigned: false, notstarted: false, onhold: false },
-  sectionData: { important: [], inprogress: [], assigned: [], notstarted: [], onhold: [] },
-  sectionExpanded: { important: false, inprogress: false, assigned: false, notstarted: false, onhold: false },
-  pendingCompletionIds: [], INITIAL_COUNT: 6,
-  dataScope: 'all', dataPeriod: 'all', dataView: 'list', statsOpen: false, filtersOpen: false
+  sectionStates: { 
+    important: false, 
+    inprogress: false, 
+    pending: false,
+    assigned: false, 
+    myrequests: false,
+    notstarted: false, 
+    onhold: false 
+  },
+  sectionData: { 
+    important: [], 
+    inprogress: [], 
+    pending: [],
+    assigned: [], 
+    myrequests: [],
+    notstarted: [], 
+    onhold: [] 
+  },
+  sectionExpanded: { 
+    important: false, 
+    inprogress: false, 
+    pending: false,
+    assigned: false, 
+    myrequests: false,
+    notstarted: false, 
+    onhold: false 
+  },
+  pendingCompletionIds: [], 
+  INITIAL_COUNT: 6,
+  dataScope: 'all', 
+  dataPeriod: 'all', 
+  dataView: 'list', 
+  statsOpen: false, 
+  filtersOpen: false
 };
 
 // ============================================
@@ -638,6 +674,7 @@ function initFlagToggles() {
     if (cb && tg) cb.addEventListener('change', () => tg.classList.toggle('active', cb.checked));
   });
 }
+
 // ============================================
 // プリセット機能
 // ============================================
@@ -765,7 +802,7 @@ function toggleSection(s) {
   document.getElementById(s + '-toggle').classList.toggle('open', S.sectionStates[s]);
 }
 
-function showAllTasks(s) { S.sectionExpanded[s] = true; renderSectionTasks(s, S.sectionData[s], s === 'assigned'); }
+function showAllTasks(s) { S.sectionExpanded[s] = true; renderSectionTasks(s, S.sectionData[s], s === 'assigned', s === 'pending', s === 'myrequests'); }
 
 function toggleFlagOption(t) {
   const o = document.getElementById('input-' + t + '-option'), cb = document.getElementById('input-' + t);
@@ -776,6 +813,7 @@ function toggleDataFlag(t) {
   const o = document.getElementById('data-' + t + '-option'), cb = document.getElementById('data-' + t);
   cb.checked = !cb.checked; o.classList.toggle('checked', cb.checked);
 }
+
 // ============================================
 // データ読み込み
 // ============================================
@@ -823,44 +861,72 @@ function updateStoreSelect(c, s) {
 async function loadHomeTasks() {
   try {
     const d = await apiGet('getHomeData', { userEmail: S.currentUser.email });
+    
     S.sectionData.important = d.important;
     S.sectionData.inprogress = d.inprogress;
+    S.sectionData.pending = d.pending || [];
     S.sectionData.assigned = d.assigned;
+    S.sectionData.myrequests = d.myRequests || [];
     S.sectionData.notstarted = d.notstarted;
     S.sectionData.onhold = d.onhold;
     
     document.getElementById('important-count').textContent = d.important.length;
-    renderSectionTasks('important', d.important, false);
+    renderSectionTasks('important', d.important, false, false, false);
     
     document.getElementById('inprogress-count').textContent = d.inprogress.length;
-    renderSectionTasks('inprogress', d.inprogress, false);
+    renderSectionTasks('inprogress', d.inprogress, false, false, false);
+    
+    document.getElementById('pending-count').textContent = (d.pending || []).length;
+    renderSectionTasks('pending', d.pending || [], false, true, false);
     
     const ac = document.getElementById('assigned-count');
     ac.textContent = d.assigned.length;
     ac.classList.toggle('has-unread', d.unreadCount > 0);
     if (d.unreadCount > 0) showAssignmentAlert(d.unreadCount, d.assigned);
-    renderSectionTasks('assigned', d.assigned, true);
+    renderSectionTasks('assigned', d.assigned, true, false, false);
+    
+    document.getElementById('myrequests-count').textContent = (d.myRequests || []).length;
+    renderSectionTasks('myrequests', d.myRequests || [], false, false, true);
     
     document.getElementById('notstarted-count').textContent = d.notstarted.length;
-    renderSectionTasks('notstarted', d.notstarted, false);
+    renderSectionTasks('notstarted', d.notstarted, false, false, false);
     
     document.getElementById('onhold-count').textContent = d.onhold.length;
-    renderSectionTasks('onhold', d.onhold, false);
+    renderSectionTasks('onhold', d.onhold, false, false, false);
     
-    if (d.unreadCount === 0 && d.completedAssignments && d.completedAssignments.length > 0) showCompletionAlert(d.completedAssignments);
+    if (d.unreadCount === 0 && d.completedAssignments && d.completedAssignments.length > 0) {
+      showCompletionAlert(d.completedAssignments);
+    }
     
-    ['important', 'inprogress', 'assigned', 'notstarted', 'onhold'].forEach(x => {
+    ['important', 'inprogress', 'pending', 'assigned', 'myrequests', 'notstarted', 'onhold'].forEach(x => {
       if (S.sectionData[x].length > 0 && !S.sectionStates[x]) toggleSection(x);
     });
+    
   } catch (error) { showToast('データ読み込みエラー', 'error'); }
 }
 
-function renderSectionTasks(s, ts, isA) {
-  const c = document.getElementById(s + '-list'), f = document.getElementById(s + '-footer');
-  if (!ts || ts.length === 0) { c.innerHTML = '<div class="empty-state"><span class="material-icons-round">check_circle</span><p>なし</p></div>'; f.style.display = 'none'; return; }
+function renderSectionTasks(s, ts, isA, isPending, isMyRequests) {
+  const c = document.getElementById(s + '-list');
+  const f = document.getElementById(s + '-footer');
+  
+  if (!ts || ts.length === 0) {
+    c.innerHTML = '<div class="empty-state"><span class="material-icons-round">check_circle</span><p>なし</p></div>';
+    f.style.display = 'none';
+    return;
+  }
+  
   const dc = S.sectionExpanded[s] ? ts.length : S.INITIAL_COUNT;
-  const dt = ts.slice(0, dc), hm = ts.length > dc;
-  c.innerHTML = dt.map(t => createTaskRowHTML(t, isA, false)).join('');
+  const dt = ts.slice(0, dc);
+  const hm = ts.length > dc;
+  
+  if (isPending) {
+    c.innerHTML = dt.map(t => createPendingTaskRowHTML(t)).join('');
+  } else if (isMyRequests) {
+    c.innerHTML = dt.map(t => createMyRequestTaskRowHTML(t)).join('');
+  } else {
+    c.innerHTML = dt.map(t => createTaskRowHTML(t, isA, false)).join('');
+  }
+  
   f.style.display = hm ? 'block' : 'none';
   if (hm) f.querySelector('.show-more-btn').textContent = '残り ' + (ts.length - dc) + ' 件を表示';
 }
@@ -932,6 +998,178 @@ function createTaskRowHTML(t, isA, isSc) {
     '<div class="task-row-content"><div class="task-row-title">' + (t.request ? escapeHtml(t.request) : '（内容なし）') + '</div>' + rs + '</div>' +
     '<div class="task-row-footer"><div class="task-row-footer-info">' + fi + '</div>' + ab + '</div></div>';
 }
+
+// ============================================
+// 対応待ちタスク専用カード生成
+// ============================================
+function createPendingTaskRowHTML(t) {
+  const cl = ['task-row', 'status-' + (t.status || '未着手')];
+  if (t.isImportant) cl.push('flag-important');
+  if (t.isTrouble) cl.push('flag-trouble');
+  
+  let fl = '';
+  if (t.isImportant || t.isTrouble) {
+    fl = '<div class="task-row-flags">';
+    if (t.isImportant) fl += '<span class="task-flag important">重要</span>';
+    if (t.isTrouble) fl += '<span class="task-flag trouble">トラブル</span>';
+    fl += '</div>';
+  }
+  
+  const sb = '<span class="task-status-badge status-' + (t.status || '未着手') + '">' + getStatusLabel(t.status) + '</span>';
+  
+  let dy = '';
+  if (t.daysAgo !== undefined && t.daysAgo > 0) {
+    dy = '<span class="task-row-days' + (t.daysAgo >= 3 ? ' danger' : '') + '">' + t.daysAgo + '日前</span>';
+  }
+  
+  let mt = '<div class="task-row-meta">';
+  if (t.company) {
+    const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company;
+    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>';
+  }
+  if (t.store) {
+    const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store;
+    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>';
+  }
+  if (t.requester) {
+    const rv = t.requester.length > 6 ? t.requester.substring(0, 6) + '…' : t.requester;
+    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.requester) + '"><span class="material-icons-round">person</span>' + escapeHtml(rv) + '</span>';
+  }
+  mt += '</div>';
+  
+  let ow = '';
+  if (t.ownerName) {
+    ow = '<div class="task-row-owner"><span class="material-icons-round">person</span>' + escapeHtml(t.ownerName) + 'さん</div>';
+  }
+  
+  let rs = '';
+  if (t.response) {
+    const pv = t.response.length > 25 ? t.response.substring(0, 25) + '…' : t.response;
+    rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(pv) + '</div>';
+  }
+  
+  let fi = '';
+  if (t.scheduledDateTime) {
+    const d = new Date(t.scheduledDateTime);
+    fi += '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + '</span>';
+  }
+  
+  let ab = '';
+  if (!t.isMyTask) {
+    ab = '<button class="task-assign-btn" style="background:#22c55e;" onclick="event.stopPropagation();startHandleTask(\'' + t.id + '\')"><span class="material-icons-round">play_arrow</span>対応する</button>';
+  }
+  
+  const ch = 'editTask(\'' + t.id + '\')';
+  
+  return '<div class="' + cl.join(' ') + '" onclick="' + ch + '">' +
+    '<div class="task-row-indicator"></div>' +
+    '<div class="task-row-header"><div class="task-row-header-left">' + fl + mt + '</div><div class="task-row-status-area">' + sb + dy + '</div></div>' +
+    ow +
+    '<div class="task-row-content"><div class="task-row-title">' + (t.request ? escapeHtml(t.request) : '（内容なし）') + '</div>' + rs + '</div>' +
+    '<div class="task-row-footer"><div class="task-row-footer-info">' + fi + '</div>' + ab + '</div></div>';
+}
+
+// ============================================
+// 依頼したタスク専用カード生成
+// ============================================
+function createMyRequestTaskRowHTML(t) {
+  const cl = ['task-row', 'status-' + (t.status || '未着手')];
+  if (t.isImportant) cl.push('flag-important');
+  if (t.isTrouble) cl.push('flag-trouble');
+  
+  let fl = '';
+  if (t.isImportant || t.isTrouble) {
+    fl = '<div class="task-row-flags">';
+    if (t.isImportant) fl += '<span class="task-flag important">重要</span>';
+    if (t.isTrouble) fl += '<span class="task-flag trouble">トラブル</span>';
+    fl += '</div>';
+  }
+  
+  const sb = '<span class="task-status-badge status-' + (t.status || '未着手') + '">' + getStatusLabel(t.status) + '</span>';
+  
+  let dy = '';
+  if (t.daysAgo !== undefined && t.daysAgo > 0) {
+    dy = '<span class="task-row-days' + (t.daysAgo >= 3 ? ' danger' : '') + '">' + t.daysAgo + '日前</span>';
+  }
+  
+  let mt = '<div class="task-row-meta">';
+  if (t.company) {
+    const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company;
+    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>';
+  }
+  if (t.store) {
+    const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store;
+    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>';
+  }
+  if (t.requester) {
+    const rv = t.requester.length > 6 ? t.requester.substring(0, 6) + '…' : t.requester;
+    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.requester) + '"><span class="material-icons-round">person</span>' + escapeHtml(rv) + '</span>';
+  }
+  mt += '</div>';
+  
+  let asn = '';
+  if (t.assigneeName) {
+    asn = '<div class="task-row-assigner" style="color:var(--purple);"><span class="material-icons-round">person_add</span>' + escapeHtml(t.assigneeName) + 'さんに依頼中';
+    if (t.assignMessage) {
+      const am = t.assignMessage.length > 15 ? t.assignMessage.substring(0, 15) + '…' : t.assignMessage;
+      asn += ' - 「' + escapeHtml(am) + '」';
+    }
+    asn += '</div>';
+  }
+  
+  let rs = '';
+  if (t.response) {
+    const pv = t.response.length > 25 ? t.response.substring(0, 25) + '…' : t.response;
+    rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(pv) + '</div>';
+  }
+  
+  let fi = '';
+  if (t.scheduledDateTime) {
+    const d = new Date(t.scheduledDateTime);
+    fi += '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + '</span>';
+  }
+  
+  if (t.assignDate) {
+    const ad = new Date(t.assignDate);
+    fi += '<span class="task-row-assignee" style="background:var(--purple-light);color:var(--purple);"><span class="material-icons-round">send</span>' + (ad.getMonth() + 1) + '/' + ad.getDate() + '依頼</span>';
+  }
+  
+  const cb = '<button class="task-assign-btn" style="background:var(--slate-500);" onclick="event.stopPropagation();cancelAssignment(\'' + t.id + '\')"><span class="material-icons-round">close</span>解除</button>';
+  
+  const ch = 'editTask(\'' + t.id + '\')';
+  
+  return '<div class="' + cl.join(' ') + '" onclick="' + ch + '">' +
+    '<div class="task-row-indicator"></div>' +
+    '<div class="task-row-header"><div class="task-row-header-left">' + fl + mt + '</div><div class="task-row-status-area">' + sb + dy + '</div></div>' +
+    asn +
+    '<div class="task-row-content"><div class="task-row-title">' + (t.request ? escapeHtml(t.request) : '（内容なし）') + '</div>' + rs + '</div>' +
+    '<div class="task-row-footer"><div class="task-row-footer-info">' + fi + '</div>' + cb + '</div></div>';
+}
+
+// ============================================
+// 対応待ちタスクを対応開始する
+// ============================================
+async function startHandleTask(id) {
+  if (!confirm('このタスクの対応を開始しますか？')) return;
+  
+  try {
+    const r = await apiPost('updateLog', {
+      id: id,
+      logData: { status: '対応中' },
+      userEmail: S.currentUser.email
+    });
+    
+    if (r.success) {
+      showToast('対応を開始しました', 'success');
+      loadHomeTasks();
+    } else {
+      showToast(r.message || '更新に失敗しました', 'error');
+    }
+  } catch (error) {
+    showToast('エラーが発生しました', 'error');
+  }
+}
+
 // ============================================
 // 通知・アラート
 // ============================================
@@ -1020,20 +1258,63 @@ async function assignFromDetail() {
   const tid = document.getElementById('edit-id').value;
   const ae = document.getElementById('input-assignee').value;
   const msg = document.getElementById('input-assign-message').value;
-  if (!tid) { showToast('先にタスクを保存', 'error'); return; }
-  if (!ae) { showToast('依頼先を選択', 'error'); return; }
+  
+  if (!tid) {
+    showToast('先にタスクを保存してください', 'error');
+    return;
+  }
+  if (!ae) {
+    showToast('依頼先を選択してください', 'error');
+    return;
+  }
+  
   try {
-    const r = await apiPost('assignTask', { taskId: tid, assigneeEmail: ae, message: msg, userEmail: S.currentUser.email });
-    if (r.success) {
-      showToast(r.message, 'success');
-      document.getElementById('input-assign-section').classList.remove('show');
-      let un = ''; S.allUsers.forEach(u => { if (u.email === ae) un = u.name; });
-      const ai = document.getElementById('input-assign-info');
-      ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">person_add</span> ' + escapeHtml(un) + 'さんに依頼中</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">解除</button></div>';
-      ai.classList.add('show');
-    } else showToast(r.message, 'error');
-  } catch (error) { showToast('依頼失敗', 'error'); }
+    const taskData = await apiGet('getLogById', { id: tid, userEmail: S.currentUser.email });
+    
+    if (taskData && taskData.isPrivate) {
+      const r = await apiPost('moveToShared', {
+        taskId: tid,
+        assigneeEmail: ae,
+        message: msg,
+        userEmail: S.currentUser.email
+      });
+      
+      if (r.success) {
+        showToast(r.message, 'success');
+        S.editingId = null;
+        goToHome();
+      } else {
+        showToast(r.message || '変換に失敗しました', 'error');
+      }
+    } else {
+      const r = await apiPost('assignTask', {
+        taskId: tid,
+        assigneeEmail: ae,
+        message: msg,
+        userEmail: S.currentUser.email
+      });
+      
+      if (r.success) {
+        showToast(r.message, 'success');
+        document.getElementById('input-assign-section').classList.remove('show');
+        
+        let un = '';
+        S.allUsers.forEach(u => { if (u.email === ae) un = u.name; });
+        
+        const ai = document.getElementById('input-assign-info');
+        ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">person_add</span> ' + escapeHtml(un) + 'さんに依頼中</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">解除</button></div>';
+        ai.classList.add('show');
+        
+        loadHomeTasks();
+      } else {
+        showToast(r.message || '依頼に失敗しました', 'error');
+      }
+    }
+  } catch (error) {
+    showToast('エラーが発生しました', 'error');
+  }
 }
+
 // ============================================
 // クイックメモ送信
 // ============================================
@@ -1122,6 +1403,7 @@ async function submitDetailForm(e) {
   } catch (error) { rb(); showToast(id ? '更新失敗' : '登録失敗', 'error'); }
   return false;
 }
+
 // ============================================
 // タスク編集
 // ============================================
@@ -1152,7 +1434,10 @@ async function editTask(id) {
       document.getElementById('input-scheduled-time').value = t.scheduledTime || '';
       document.getElementById('input-location').value = t.location || '';
       
-      const ai = document.getElementById('input-assign-info'), as = document.getElementById('input-assign-section');
+      const ai = document.getElementById('input-assign-info');
+      const as = document.getElementById('input-assign-section');
+      const asTitle = document.querySelector('#input-assign-section .assign-section-title');
+      
       if (t.isAssignee && t.ownerName) {
         ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">person</span> ' + escapeHtml(t.ownerName) + 'さんから依頼</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">辞退</button></div>' + (t.assignMessage ? '<div style="margin-top:6px;font-size:12px;color:var(--slate-600);">「' + escapeHtml(t.assignMessage) + '」</div>' : '');
         ai.classList.add('show'); as.classList.remove('show');
@@ -1161,12 +1446,25 @@ async function editTask(id) {
         ai.classList.add('show'); as.classList.remove('show');
       } else {
         ai.classList.remove('show');
-        if (!t.isPrivate) {
-          as.classList.add('show');
-          const asel = document.getElementById('input-assignee'); asel.innerHTML = '<option value="">依頼先を選択</option>';
-          S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; asel.appendChild(o); } });
-          document.getElementById('input-assign-message').value = '';
-        } else as.classList.remove('show');
+        as.classList.add('show');
+        
+        if (t.isPrivate && asTitle) {
+          asTitle.innerHTML = '<span class="material-icons-round">swap_horiz</span>全体業務に変換して依頼';
+        } else if (asTitle) {
+          asTitle.innerHTML = '<span class="material-icons-round">person_add</span>メンバーに依頼';
+        }
+        
+        const asel = document.getElementById('input-assignee');
+        asel.innerHTML = '<option value="">依頼先を選択</option>';
+        S.allUsers.forEach(u => {
+          if (u.email !== S.currentUser.email) {
+            const o = document.createElement('option');
+            o.value = u.email;
+            o.textContent = u.name;
+            asel.appendChild(o);
+          }
+        });
+        document.getElementById('input-assign-message').value = '';
       }
       
       const ci = document.getElementById('input-calendar-info');
@@ -1232,6 +1530,7 @@ async function removeCalendarEvent() {
     else showToast(r.message, 'error');
   } catch (error) { showToast('削除失敗', 'error'); }
 }
+
 // ============================================
 // フォームリセット・ナビゲーション
 // ============================================
