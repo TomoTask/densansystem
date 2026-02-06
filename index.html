@@ -5,11 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
   <meta name="theme-color" content="#0f172a">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com https://fonts.googleapis.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com; img-src 'self' data:;">
   <title>電算室業務管理システム</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
@@ -408,13 +403,12 @@ textarea.form-control{min-height:80px;resize:vertical}
         </div>
         <div class="section important" id="section-important"><div class="section-header" onclick="toggleSection('important')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">priority_high</span></div><span class="section-title">重要・緊急</span><span class="section-count" id="important-count">0</span></div><span class="material-icons-round section-toggle" id="important-toggle">expand_more</span></div><div class="section-content" id="important-content"><div class="section-list" id="important-list"></div><div class="section-footer" id="important-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('important')">すべて表示</button></div></div></div>
         <div class="section inprogress" id="section-inprogress"><div class="section-header" onclick="toggleSection('inprogress')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">hourglass_top</span></div><span class="section-title">対応中</span><span class="section-count" id="inprogress-count">0</span></div><span class="material-icons-round section-toggle" id="inprogress-toggle">expand_more</span></div><div class="section-content" id="inprogress-content"><div class="section-list" id="inprogress-list"></div><div class="section-footer" id="inprogress-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('inprogress')">すべて表示</button></div></div></div>
-        <div class="section pending" id="section-pending"><div class="section-header" onclick="toggleSection('pending')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">inbox</span></div><span class="section-title">対応待ち</span><span class="section-count" id="pending-count">0</span></div><span class="material-icons-round section-toggle" id="pending-toggle">expand_more</span></div><div class="section-content" id="pending-content"><div class="section-list" id="pending-list"></div><div class="section-footer" id="pending-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('pending')">すべて表示</button></div></div></div>
+        <div class="section pending" id="section-pending"><div class="section-header" onclick="toggleSection('pending')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">groups</span></div><span class="section-title">対応待ち（チーム依頼）</span><span class="section-count" id="pending-count">0</span></div><span class="material-icons-round section-toggle" id="pending-toggle">expand_more</span></div><div class="section-content" id="pending-content"><div class="section-list" id="pending-list"></div><div class="section-footer" id="pending-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('pending')">すべて表示</button></div></div></div>
         <div class="section assigned" id="section-assigned"><div class="section-header" onclick="toggleSection('assigned')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">move_to_inbox</span></div><span class="section-title">依頼されたタスク</span><span class="section-count" id="assigned-count">0</span></div><span class="material-icons-round section-toggle" id="assigned-toggle">expand_more</span></div><div class="section-content" id="assigned-content"><div class="section-list" id="assigned-list"></div><div class="section-footer" id="assigned-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('assigned')">すべて表示</button></div></div></div>
         <div class="section myrequests" id="section-myrequests"><div class="section-header" onclick="toggleSection('myrequests')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">send</span></div><span class="section-title">依頼したタスク</span><span class="section-count" id="myrequests-count">0</span></div><span class="material-icons-round section-toggle" id="myrequests-toggle">expand_more</span></div><div class="section-content" id="myrequests-content"><div class="section-list" id="myrequests-list"></div><div class="section-footer" id="myrequests-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('myrequests')">すべて表示</button></div></div></div>
         <div class="section notstarted" id="section-notstarted"><div class="section-header" onclick="toggleSection('notstarted')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">pending_actions</span></div><span class="section-title">未着手タスク</span><span class="section-count" id="notstarted-count">0</span></div><span class="material-icons-round section-toggle" id="notstarted-toggle">expand_more</span></div><div class="section-content" id="notstarted-content"><div class="section-list" id="notstarted-list"></div><div class="section-footer" id="notstarted-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('notstarted')">すべて表示</button></div></div></div>
         <div class="section onhold" id="section-onhold"><div class="section-header" onclick="toggleSection('onhold')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">pause_circle</span></div><span class="section-title">保留</span><span class="section-count" id="onhold-count">0</span></div><span class="material-icons-round section-toggle" id="onhold-toggle">expand_more</span></div><div class="section-content" id="onhold-content"><div class="section-list" id="onhold-list"></div><div class="section-footer" id="onhold-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('onhold')">すべて表示</button></div></div></div>
-      </div>
-      <div id="input-page" class="page">
+      </div><div id="input-page" class="page">
         <div class="card">
           <h2 class="card-title"><span class="material-icons-round">edit_note</span>タスク詳細</h2>
           <form id="detail-form" onsubmit="return submitDetailForm(event)">
@@ -513,7 +507,6 @@ textarea.form-control{min-height:80px;resize:vertical}
 const API_BASE_URL = 'https://script.google.com/macros/s/AKfycby_aTSNWk067_HVpGGYgfo1alVC0osGx0jrKLPtb10Qn-irXen8k3u-ErsbU2cRIaWJGw/exec';
 const API_KEY = 'densan_apikey_20260127';
 
-// API呼び出しヘルパー関数
 async function apiGet(action, params = {}) {
   const url = new URL(API_BASE_URL);
   url.searchParams.set('action', action);
@@ -542,10 +535,7 @@ async function apiPost(action, data = {}) {
       }
     }
   });
-  const response = await fetch(url.toString(), { 
-    method: 'GET',
-    headers: { 'Accept': 'application/json' }
-  });
+  const response = await fetch(url.toString(), { method: 'GET', headers: { 'Accept': 'application/json' } });
   return await response.json();
 }
 
@@ -556,40 +546,11 @@ const S = {
   masterData: null, currentUser: null, allUsers: [], editingId: null, toastTimer: null,
   quickMemoOpen: false, lastListState: null, isAppInitialized: false,
   quickSubmitting: false, detailSubmitting: false,
-  sectionStates: { 
-    important: false, 
-    inprogress: false, 
-    pending: false,
-    assigned: false, 
-    myrequests: false,
-    notstarted: false, 
-    onhold: false 
-  },
-  sectionData: { 
-    important: [], 
-    inprogress: [], 
-    pending: [],
-    assigned: [], 
-    myrequests: [],
-    notstarted: [], 
-    onhold: [] 
-  },
-  sectionExpanded: { 
-    important: false, 
-    inprogress: false, 
-    pending: false,
-    assigned: false, 
-    myrequests: false,
-    notstarted: false, 
-    onhold: false 
-  },
-  pendingCompletionIds: [], 
-  INITIAL_COUNT: 6,
-  dataScope: 'all', 
-  dataPeriod: 'all', 
-  dataView: 'list', 
-  statsOpen: false, 
-  filtersOpen: false
+  sectionStates: { important: false, inprogress: false, pending: false, assigned: false, myrequests: false, notstarted: false, onhold: false },
+  sectionData: { important: [], inprogress: [], pending: [], assigned: [], myrequests: [], notstarted: [], onhold: [] },
+  sectionExpanded: { important: false, inprogress: false, pending: false, assigned: false, myrequests: false, notstarted: false, onhold: false },
+  pendingCompletionIds: [], INITIAL_COUNT: 6,
+  dataScope: 'all', dataPeriod: 'all', dataView: 'list', statsOpen: false, filtersOpen: false
 };
 
 // ============================================
@@ -753,12 +714,35 @@ function toggleScheduleFields(pf) {
 }
 
 function toggleQuickAssign() {
-  const cb = document.getElementById('quick-add-assign'), f = document.getElementById('quick-assign-fields'), c = document.getElementById('quick-company');
+  const cb = document.getElementById('quick-add-assign');
+  const f = document.getElementById('quick-assign-fields');
+  const c = document.getElementById('quick-company');
+  
   if (cb.checked) {
     if (c.value === 'プライベート') { cb.checked = false; showToast('プライベートは依頼不可', 'error'); return; }
     f.classList.add('active');
-    const s = document.getElementById('quick-assignee'); s.innerHTML = '<option value="">依頼先を選択</option>';
-    S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; s.appendChild(o); } });
+    
+    const s = document.getElementById('quick-assignee');
+    s.innerHTML = '<option value="">依頼先を選択</option>';
+    
+    const teamOpt = document.createElement('option');
+    teamOpt.value = 'shared';
+    teamOpt.textContent = '📢 チーム全体に依頼';
+    s.appendChild(teamOpt);
+    
+    const divider = document.createElement('option');
+    divider.disabled = true;
+    divider.textContent = '──────────';
+    s.appendChild(divider);
+    
+    S.allUsers.forEach(u => {
+      if (u.email !== S.currentUser.email) {
+        const o = document.createElement('option');
+        o.value = u.email;
+        o.textContent = u.name;
+        s.appendChild(o);
+      }
+    });
   } else {
     f.classList.remove('active');
     document.getElementById('quick-assignee').value = '';
@@ -813,8 +797,7 @@ function toggleDataFlag(t) {
   const o = document.getElementById('data-' + t + '-option'), cb = document.getElementById('data-' + t);
   cb.checked = !cb.checked; o.classList.toggle('checked', cb.checked);
 }
-
-// ============================================
+    // ============================================
 // データ読み込み
 // ============================================
 async function loadAllUsers() {
@@ -942,6 +925,7 @@ function escapeHtml(str) {
 function getStatusLabel(s) {
   switch (s) { case '対応完了': return '完了'; case '対応中': return '対応中'; case '保留': return '保留'; default: return '未着手'; }
 }
+
 // ============================================
 // タスクカードHTML生成
 // ============================================
@@ -999,9 +983,6 @@ function createTaskRowHTML(t, isA, isSc) {
     '<div class="task-row-footer"><div class="task-row-footer-info">' + fi + '</div>' + ab + '</div></div>';
 }
 
-// ============================================
-// 対応待ちタスク専用カード生成
-// ============================================
 function createPendingTaskRowHTML(t) {
   const cl = ['task-row', 'status-' + (t.status || '未着手')];
   if (t.isImportant) cl.push('flag-important');
@@ -1023,40 +1004,29 @@ function createPendingTaskRowHTML(t) {
   }
   
   let mt = '<div class="task-row-meta">';
-  if (t.company) {
-    const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company;
-    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>';
-  }
-  if (t.store) {
-    const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store;
-    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>';
-  }
-  if (t.requester) {
-    const rv = t.requester.length > 6 ? t.requester.substring(0, 6) + '…' : t.requester;
-    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.requester) + '"><span class="material-icons-round">person</span>' + escapeHtml(rv) + '</span>';
-  }
+  if (t.company) { const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>'; }
+  if (t.store) { const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>'; }
+  if (t.requester) { const rv = t.requester.length > 6 ? t.requester.substring(0, 6) + '…' : t.requester; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.requester) + '"><span class="material-icons-round">person</span>' + escapeHtml(rv) + '</span>'; }
   mt += '</div>';
   
   let ow = '';
   if (t.ownerName) {
-    ow = '<div class="task-row-owner"><span class="material-icons-round">person</span>' + escapeHtml(t.ownerName) + 'さん</div>';
+    const displayName = t.isMyTask ? 'あなた' : t.ownerName + 'さん';
+    const ownerStyle = t.isMyTask ? 'color:var(--primary);background:var(--primary-light);' : 'color:var(--green);background:var(--green-light);';
+    ow = '<div class="task-row-owner" style="' + ownerStyle + '"><span class="material-icons-round">campaign</span>' + escapeHtml(displayName) + 'が依頼</div>';
   }
   
   let rs = '';
-  if (t.response) {
-    const pv = t.response.length > 25 ? t.response.substring(0, 25) + '…' : t.response;
-    rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(pv) + '</div>';
-  }
+  if (t.response) { const pv = t.response.length > 25 ? t.response.substring(0, 25) + '…' : t.response; rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(pv) + '</div>'; }
   
   let fi = '';
-  if (t.scheduledDateTime) {
-    const d = new Date(t.scheduledDateTime);
-    fi += '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + '</span>';
-  }
+  if (t.scheduledDateTime) { const d = new Date(t.scheduledDateTime); fi += '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + '</span>'; }
   
   let ab = '';
   if (!t.isMyTask) {
-    ab = '<button class="task-assign-btn" style="background:#22c55e;" onclick="event.stopPropagation();startHandleTask(\'' + t.id + '\')"><span class="material-icons-round">play_arrow</span>対応する</button>';
+    ab = '<button class="task-assign-btn" style="background:#22c55e;" onclick="event.stopPropagation();startHandleTask(\'' + t.id + '\')"><span class="material-icons-round">front_hand</span>対応する</button>';
+  } else {
+    ab = '<button class="task-assign-btn" style="background:var(--slate-500);" onclick="event.stopPropagation();cancelAssignment(\'' + t.id + '\')"><span class="material-icons-round">undo</span>取り下げ</button>';
   }
   
   const ch = 'editTask(\'' + t.id + '\')';
@@ -1069,9 +1039,6 @@ function createPendingTaskRowHTML(t) {
     '<div class="task-row-footer"><div class="task-row-footer-info">' + fi + '</div>' + ab + '</div></div>';
 }
 
-// ============================================
-// 依頼したタスク専用カード生成
-// ============================================
 function createMyRequestTaskRowHTML(t) {
   const cl = ['task-row', 'status-' + (t.status || '未着手')];
   if (t.isImportant) cl.push('flag-important');
@@ -1093,45 +1060,34 @@ function createMyRequestTaskRowHTML(t) {
   }
   
   let mt = '<div class="task-row-meta">';
-  if (t.company) {
-    const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company;
-    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>';
-  }
-  if (t.store) {
-    const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store;
-    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>';
-  }
-  if (t.requester) {
-    const rv = t.requester.length > 6 ? t.requester.substring(0, 6) + '…' : t.requester;
-    mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.requester) + '"><span class="material-icons-round">person</span>' + escapeHtml(rv) + '</span>';
-  }
+  if (t.company) { const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>'; }
+  if (t.store) { const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>'; }
+  if (t.requester) { const rv = t.requester.length > 6 ? t.requester.substring(0, 6) + '…' : t.requester; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.requester) + '"><span class="material-icons-round">person</span>' + escapeHtml(rv) + '</span>'; }
   mt += '</div>';
   
   let asn = '';
   if (t.assigneeName) {
-    asn = '<div class="task-row-assigner" style="color:var(--purple);"><span class="material-icons-round">person_add</span>' + escapeHtml(t.assigneeName) + 'さんに依頼中';
-    if (t.assignMessage) {
-      const am = t.assignMessage.length > 15 ? t.assignMessage.substring(0, 15) + '…' : t.assignMessage;
-      asn += ' - 「' + escapeHtml(am) + '」';
-    }
+    const isTeamShared = (t.assigneeEmail || '').toLowerCase() === 'shared';
+    const iconClass = isTeamShared ? 'groups' : 'person_add';
+    const displayName = isTeamShared ? 'チーム全体' : t.assigneeName + 'さん';
+    const colorStyle = isTeamShared ? 'color:var(--green);' : 'color:var(--purple);';
+    
+    asn = '<div class="task-row-assigner" style="' + colorStyle + '"><span class="material-icons-round">' + iconClass + '</span>' + escapeHtml(displayName) + 'に依頼中';
+    if (t.assignMessage) { const am = t.assignMessage.length > 15 ? t.assignMessage.substring(0, 15) + '…' : t.assignMessage; asn += ' - 「' + escapeHtml(am) + '」'; }
     asn += '</div>';
   }
   
   let rs = '';
-  if (t.response) {
-    const pv = t.response.length > 25 ? t.response.substring(0, 25) + '…' : t.response;
-    rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(pv) + '</div>';
-  }
+  if (t.response) { const pv = t.response.length > 25 ? t.response.substring(0, 25) + '…' : t.response; rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(pv) + '</div>'; }
   
   let fi = '';
-  if (t.scheduledDateTime) {
-    const d = new Date(t.scheduledDateTime);
-    fi += '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + '</span>';
-  }
+  if (t.scheduledDateTime) { const d = new Date(t.scheduledDateTime); fi += '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + '</span>'; }
   
   if (t.assignDate) {
     const ad = new Date(t.assignDate);
-    fi += '<span class="task-row-assignee" style="background:var(--purple-light);color:var(--purple);"><span class="material-icons-round">send</span>' + (ad.getMonth() + 1) + '/' + ad.getDate() + '依頼</span>';
+    const isTeamShared = (t.assigneeEmail || '').toLowerCase() === 'shared';
+    const badgeStyle = isTeamShared ? 'background:var(--green-light);color:var(--green);' : 'background:var(--purple-light);color:var(--purple);';
+    fi += '<span class="task-row-assignee" style="' + badgeStyle + '"><span class="material-icons-round">send</span>' + (ad.getMonth() + 1) + '/' + ad.getDate() + '依頼</span>';
   }
   
   const cb = '<button class="task-assign-btn" style="background:var(--slate-500);" onclick="event.stopPropagation();cancelAssignment(\'' + t.id + '\')"><span class="material-icons-round">close</span>解除</button>';
@@ -1146,28 +1102,14 @@ function createMyRequestTaskRowHTML(t) {
     '<div class="task-row-footer"><div class="task-row-footer-info">' + fi + '</div>' + cb + '</div></div>';
 }
 
-// ============================================
-// 対応待ちタスクを対応開始する
-// ============================================
 async function startHandleTask(id) {
-  if (!confirm('このタスクの対応を開始しますか？')) return;
+  if (!confirm('このタスクの対応を開始しますか？\n（あなたに割り当てられます）')) return;
   
   try {
-    const r = await apiPost('updateLog', {
-      id: id,
-      logData: { status: '対応中' },
-      userEmail: S.currentUser.email
-    });
-    
-    if (r.success) {
-      showToast('対応を開始しました', 'success');
-      loadHomeTasks();
-    } else {
-      showToast(r.message || '更新に失敗しました', 'error');
-    }
-  } catch (error) {
-    showToast('エラーが発生しました', 'error');
-  }
+    const r = await apiPost('takeSharedTask', { taskId: id, userEmail: S.currentUser.email });
+    if (r.success) { showToast(r.message, 'success'); loadHomeTasks(); }
+    else { showToast(r.message || '処理に失敗しました', 'error'); }
+  } catch (error) { showToast('エラーが発生しました', 'error'); }
 }
 
 // ============================================
@@ -1211,7 +1153,19 @@ function scrollToAssigned() {
 // ============================================
 function openAssignModal(tid) {
   document.getElementById('assign-task-id').value = tid;
-  const s = document.getElementById('assign-user'); s.innerHTML = '<option value="">メンバーを選択</option>';
+  const s = document.getElementById('assign-user');
+  s.innerHTML = '<option value="">依頼先を選択</option>';
+  
+  const teamOpt = document.createElement('option');
+  teamOpt.value = 'shared';
+  teamOpt.textContent = '📢 チーム全体に依頼';
+  s.appendChild(teamOpt);
+  
+  const divider = document.createElement('option');
+  divider.disabled = true;
+  divider.textContent = '──────────';
+  s.appendChild(divider);
+  
   S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; s.appendChild(o); } });
   document.getElementById('assign-message').value = '';
   document.getElementById('assign-modal').classList.add('active');
@@ -1221,7 +1175,7 @@ async function submitAssignment() {
   const tid = document.getElementById('assign-task-id').value;
   const ae = document.getElementById('assign-user').value;
   const msg = document.getElementById('assign-message').value;
-  if (!ae) { showToast('メンバーを選択', 'error'); return; }
+  if (!ae) { showToast('依頼先を選択', 'error'); return; }
   try {
     const r = await apiPost('assignTask', { taskId: tid, assigneeEmail: ae, message: msg, userEmail: S.currentUser.email });
     if (r.success) { showToast(r.message, 'success'); closeModal('assign-modal'); loadHomeTasks(); }
@@ -1238,8 +1192,7 @@ async function cancelAssignment(tid) {
       const ai = document.getElementById('input-assign-info'), as = document.getElementById('input-assign-section');
       if (ai && S.editingId) {
         ai.classList.remove('show');
-        const asel = document.getElementById('input-assignee'); asel.innerHTML = '<option value="">依頼先を選択</option>';
-        S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; asel.appendChild(o); } });
+        buildAssigneeSelect(document.getElementById('input-assignee'));
         document.getElementById('input-assign-message').value = '';
         as.classList.add('show');
       }
@@ -1254,65 +1207,51 @@ async function openAssignedTask(id) {
   editTask(id);
 }
 
+function buildAssigneeSelect(sel) {
+  sel.innerHTML = '<option value="">依頼先を選択</option>';
+  const teamOpt = document.createElement('option');
+  teamOpt.value = 'shared';
+  teamOpt.textContent = '📢 チーム全体に依頼';
+  sel.appendChild(teamOpt);
+  const divider = document.createElement('option');
+  divider.disabled = true;
+  divider.textContent = '──────────';
+  sel.appendChild(divider);
+  S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; sel.appendChild(o); } });
+}
+
 async function assignFromDetail() {
   const tid = document.getElementById('edit-id').value;
   const ae = document.getElementById('input-assignee').value;
   const msg = document.getElementById('input-assign-message').value;
   
-  if (!tid) {
-    showToast('先にタスクを保存してください', 'error');
-    return;
-  }
-  if (!ae) {
-    showToast('依頼先を選択してください', 'error');
-    return;
-  }
+  if (!tid) { showToast('先にタスクを保存してください', 'error'); return; }
+  if (!ae) { showToast('依頼先を選択してください', 'error'); return; }
   
   try {
     const taskData = await apiGet('getLogById', { id: tid, userEmail: S.currentUser.email });
     
     if (taskData && taskData.isPrivate) {
-      const r = await apiPost('moveToShared', {
-        taskId: tid,
-        assigneeEmail: ae,
-        message: msg,
-        userEmail: S.currentUser.email
-      });
-      
-      if (r.success) {
-        showToast(r.message, 'success');
-        S.editingId = null;
-        goToHome();
-      } else {
-        showToast(r.message || '変換に失敗しました', 'error');
-      }
+      const r = await apiPost('moveToShared', { taskId: tid, assigneeEmail: ae, message: msg, userEmail: S.currentUser.email });
+      if (r.success) { showToast(r.message, 'success'); S.editingId = null; goToHome(); }
+      else { showToast(r.message || '変換に失敗しました', 'error'); }
     } else {
-      const r = await apiPost('assignTask', {
-        taskId: tid,
-        assigneeEmail: ae,
-        message: msg,
-        userEmail: S.currentUser.email
-      });
-      
+      const r = await apiPost('assignTask', { taskId: tid, assigneeEmail: ae, message: msg, userEmail: S.currentUser.email });
       if (r.success) {
         showToast(r.message, 'success');
         document.getElementById('input-assign-section').classList.remove('show');
         
-        let un = '';
-        S.allUsers.forEach(u => { if (u.email === ae) un = u.name; });
+        const isTeam = ae.toLowerCase() === 'shared';
+        let un = isTeam ? 'チーム全体' : '';
+        if (!isTeam) S.allUsers.forEach(u => { if (u.email === ae) un = u.name; });
         
         const ai = document.getElementById('input-assign-info');
-        ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">person_add</span> ' + escapeHtml(un) + 'さんに依頼中</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">解除</button></div>';
+        ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">' + (isTeam ? 'groups' : 'person_add') + '</span> ' + escapeHtml(un) + (isTeam ? '' : 'さん') + 'に依頼中</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">解除</button></div>';
         ai.classList.add('show');
-        
         loadHomeTasks();
-      } else {
-        showToast(r.message || '依頼に失敗しました', 'error');
-      }
+      } else { showToast(r.message || '依頼に失敗しました', 'error'); }
     }
-  } catch (error) {
-    showToast('エラーが発生しました', 'error');
-  }
+  } catch (error) { showToast('エラーが発生しました', 'error'); }
 }
 
 // ============================================
@@ -1442,28 +1381,17 @@ async function editTask(id) {
         ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">person</span> ' + escapeHtml(t.ownerName) + 'さんから依頼</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">辞退</button></div>' + (t.assignMessage ? '<div style="margin-top:6px;font-size:12px;color:var(--slate-600);">「' + escapeHtml(t.assignMessage) + '」</div>' : '');
         ai.classList.add('show'); as.classList.remove('show');
       } else if (t.assigneeName) {
-        ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">person_add</span> ' + escapeHtml(t.assigneeName) + 'さんに依頼中</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">解除</button></div>';
+        const displayName = t.assigneeEmail === 'shared' ? 'チーム全体' : t.assigneeName;
+        ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">' + (t.assigneeEmail === 'shared' ? 'groups' : 'person_add') + '</span> ' + escapeHtml(displayName) + 'に依頼中</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">解除</button></div>';
         ai.classList.add('show'); as.classList.remove('show');
       } else {
         ai.classList.remove('show');
         as.classList.add('show');
         
-        if (t.isPrivate && asTitle) {
-          asTitle.innerHTML = '<span class="material-icons-round">swap_horiz</span>全体業務に変換して依頼';
-        } else if (asTitle) {
-          asTitle.innerHTML = '<span class="material-icons-round">person_add</span>メンバーに依頼';
-        }
+        if (t.isPrivate && asTitle) { asTitle.innerHTML = '<span class="material-icons-round">swap_horiz</span>全体業務に変換して依頼'; }
+        else if (asTitle) { asTitle.innerHTML = '<span class="material-icons-round">person_add</span>メンバーに依頼'; }
         
-        const asel = document.getElementById('input-assignee');
-        asel.innerHTML = '<option value="">依頼先を選択</option>';
-        S.allUsers.forEach(u => {
-          if (u.email !== S.currentUser.email) {
-            const o = document.createElement('option');
-            o.value = u.email;
-            o.textContent = u.name;
-            asel.appendChild(o);
-          }
-        });
+        buildAssigneeSelect(document.getElementById('input-assignee'));
         document.getElementById('input-assign-message').value = '';
       }
       
@@ -1570,15 +1498,7 @@ function setDataView(view) { S.dataView = view; document.querySelectorAll('.view
 function filterByStatCard(filter) { document.getElementById('data-status').value = filter === 'completed' ? '対応完了' : ''; document.getElementById('data-important').checked = filter === 'important'; document.getElementById('data-important-option').classList.toggle('checked', filter === 'important'); document.getElementById('data-trouble').checked = filter === 'trouble'; document.getElementById('data-trouble-option').classList.toggle('checked', filter === 'trouble'); loadDataPage(); }
 
 async function loadDataPage() {
-  const criteria = {
-    keyword: document.getElementById('data-keyword').value,
-    company: document.getElementById('data-company').value,
-    store: document.getElementById('data-store').value,
-    category: document.getElementById('data-category').value,
-    status: document.getElementById('data-status').value,
-    isImportant: document.getElementById('data-important').checked,
-    isTrouble: document.getElementById('data-trouble').checked
-  };
+  const criteria = { keyword: document.getElementById('data-keyword').value, company: document.getElementById('data-company').value, store: document.getElementById('data-store').value, category: document.getElementById('data-category').value, status: document.getElementById('data-status').value, isImportant: document.getElementById('data-important').checked, isTrouble: document.getElementById('data-trouble').checked };
   document.getElementById('data-loading').classList.add('active');
   try {
     let d;
