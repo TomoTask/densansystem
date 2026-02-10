@@ -363,12 +363,7 @@ textarea.form-control{min-height:80px;resize:vertical}
       <h1 class="login-title">電算室業務管理システム</h1>
       <p class="login-subtitle">ログインして業務を開始</p>
       <form class="login-form" id="login-form">
-        <select id="login-user" class="login-select" required>
-          <option value="">ユーザーを選択</option>
-          <option value="岸本">岸本</option>
-          <option value="平良">平良</option>
-          <option value="屋嘉比">屋嘉比</option>
-        </select>
+        <select id="login-user" class="login-select" required><option value="">ユーザーを選択</option><option value="岸本">岸本</option><option value="平良">平良</option><option value="屋嘉比">屋嘉比</option></select>
         <input type="password" id="login-password" class="login-input" placeholder="パスワード" required>
         <button type="submit" class="login-btn" id="login-btn"><span class="material-icons-round">login</span>ログイン</button>
         <p class="login-error" id="login-error"></p>
@@ -376,12 +371,7 @@ textarea.form-control{min-height:80px;resize:vertical}
     </div>
   </div>
   <div class="app-container" id="app-container">
-    <header class="header">
-      <div class="header-content">
-        <div class="header-brand"><span class="material-icons-round">terminal</span><h1>電算室業務管理</h1></div>
-        <div class="user-chip" onclick="showUserModal()"><span class="material-icons-round">person</span><span id="user-name">-</span></div>
-      </div>
-    </header>
+    <header class="header"><div class="header-content"><div class="header-brand"><span class="material-icons-round">terminal</span><h1>電算室業務管理</h1></div><div class="user-chip" onclick="showUserModal()"><span class="material-icons-round">person</span><span id="user-name">-</span></div></div></header>
     <main class="main">
       <div id="home-page" class="page active">
         <div class="search-bar" onclick="goToPage('data')"><span class="material-icons-round">search</span><span class="search-bar-text">キーワード検索・データ閲覧...</span></div>
@@ -408,7 +398,8 @@ textarea.form-control{min-height:80px;resize:vertical}
         <div class="section myrequests" id="section-myrequests"><div class="section-header" onclick="toggleSection('myrequests')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">send</span></div><span class="section-title">依頼したタスク</span><span class="section-count" id="myrequests-count">0</span></div><span class="material-icons-round section-toggle" id="myrequests-toggle">expand_more</span></div><div class="section-content" id="myrequests-content"><div class="section-list" id="myrequests-list"></div><div class="section-footer" id="myrequests-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('myrequests')">すべて表示</button></div></div></div>
         <div class="section notstarted" id="section-notstarted"><div class="section-header" onclick="toggleSection('notstarted')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">pending_actions</span></div><span class="section-title">未着手タスク</span><span class="section-count" id="notstarted-count">0</span></div><span class="material-icons-round section-toggle" id="notstarted-toggle">expand_more</span></div><div class="section-content" id="notstarted-content"><div class="section-list" id="notstarted-list"></div><div class="section-footer" id="notstarted-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('notstarted')">すべて表示</button></div></div></div>
         <div class="section onhold" id="section-onhold"><div class="section-header" onclick="toggleSection('onhold')"><div class="section-header-left"><div class="section-icon"><span class="material-icons-round">pause_circle</span></div><span class="section-title">保留</span><span class="section-count" id="onhold-count">0</span></div><span class="material-icons-round section-toggle" id="onhold-toggle">expand_more</span></div><div class="section-content" id="onhold-content"><div class="section-list" id="onhold-list"></div><div class="section-footer" id="onhold-footer" style="display:none;"><button class="show-more-btn" onclick="showAllTasks('onhold')">すべて表示</button></div></div></div>
-      </div><div id="input-page" class="page">
+      </div>
+      <div id="input-page" class="page">
         <div class="card">
           <h2 class="card-title"><span class="material-icons-round">edit_note</span>タスク詳細</h2>
           <form id="detail-form" onsubmit="return submitDetailForm(event)">
@@ -418,7 +409,7 @@ textarea.form-control{min-height:80px;resize:vertical}
             <div class="form-row"><div class="form-group"><label class="form-label">依頼者</label><input type="text" id="input-requester" class="form-control"></div><div class="form-group"><label class="form-label">カテゴリ<span class="required">*</span></label><select id="input-category" class="form-control" required><option value="">選択</option></select></div></div>
             <div class="form-group"><label class="form-label">依頼内容</label><textarea id="input-request" class="form-control" rows="2"></textarea></div>
             <div class="form-group"><label class="form-label">対応内容<span class="required">*</span></label><textarea id="input-response" class="form-control" rows="3" required placeholder="どのように対応しましたか？"></textarea></div>
-            <div class="form-group"><label class="form-label">フラグ</label><div class="flag-options"><label class="flag-option important" id="input-important-option" onclick="toggleFlagOption('important')"><input type="checkbox" id="input-important"><span>❗ 重要</span></label><label class="flag-option trouble" id="input-trouble-option" onclick="toggleFlagOption('trouble')"><input type="checkbox" id="input-trouble"><span>⚡ トラブル</span></label></div></div>
+            <div class="form-group"><label class="form-label">フラグ</label><div class="flag-options"><label class="flag-option important" id="input-important-option" onclick="toggleFlagOption('important', event)"><input type="checkbox" id="input-important"><span>❗ 重要</span></label><label class="flag-option trouble" id="input-trouble-option" onclick="toggleFlagOption('trouble', event)"><input type="checkbox" id="input-trouble"><span>⚡ トラブル</span></label></div></div>
             <div class="calendar-section"><div class="calendar-section-header"><input type="checkbox" id="input-add-calendar" onchange="toggleScheduleFields('input')"><label for="input-add-calendar"><span class="material-icons-round" style="font-size:16px;vertical-align:middle;">event</span> カレンダーに登録</label></div><div class="calendar-info" id="input-calendar-info"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">check_circle</span> カレンダー登録済み</span><button type="button" class="btn btn-outline" style="padding:6px 12px;font-size:12px;" onclick="removeCalendarEvent()">削除</button></div><div class="calendar-fields" id="input-schedule-fields"><div class="allday-toggle"><input type="checkbox" id="input-allday" onchange="toggleAllDay('input')"><label for="input-allday">終日</label></div><div class="form-row"><div class="form-group" style="margin:0;"><label class="form-label">予定日</label><input type="date" id="input-scheduled-date" class="form-control"></div></div><div class="form-row" id="input-time-wrapper"><div class="form-group" style="margin:0;"><label class="form-label">開始</label><input type="time" id="input-scheduled-time" class="form-control" onchange="clearInputDuration()"></div><div class="form-group" style="margin:0;"><label class="form-label">終了</label><input type="time" id="input-end-time" class="form-control"></div></div><div id="input-duration-wrapper"><div class="duration-chips"><button type="button" class="duration-chip" onclick="setInputDuration(30)">30分</button><button type="button" class="duration-chip active" onclick="setInputDuration(60)">1時間</button><button type="button" class="duration-chip" onclick="setInputDuration(120)">2時間</button></div></div><div class="form-group" style="margin:0;"><label class="form-label">場所</label><input type="text" id="input-location" class="form-control" placeholder="例: 3F会議室"></div></div></div>
             <div class="assign-info" id="input-assign-info"></div>
             <div class="assign-section" id="input-assign-section"><div class="assign-section-title"><span class="material-icons-round">person_add</span>メンバーに依頼</div><div class="form-row"><div class="form-group" style="margin:0;"><select id="input-assignee" class="form-control"><option value="">依頼先を選択</option></select></div><div class="form-group" style="margin:0;"><input type="text" id="input-assign-message" class="form-control" placeholder="ひとこと" maxlength="100"></div></div><button type="button" class="btn btn-primary btn-block" onclick="assignFromDetail()" style="margin-top:12px;"><span class="material-icons-round">send</span>依頼する</button></div>
@@ -432,78 +423,24 @@ textarea.form-control{min-height:80px;resize:vertical}
         </div>
       </div>
       <div id="data-page" class="page">
-        <div class="data-search-box">
-          <div class="data-search-input">
-            <span class="material-icons-round">search</span>
-            <input type="text" id="data-keyword" placeholder="キーワード検索...">
-            <button class="data-filter-toggle" id="data-filter-toggle" onclick="toggleDataFilters()"><span class="material-icons-round">tune</span></button>
-          </div>
-          <div class="data-filters" id="data-filters">
-            <div class="form-row">
-              <div class="form-group"><select id="data-company" class="form-control"><option value="">会社（すべて）</option></select></div>
-              <div class="form-group"><select id="data-store" class="form-control"><option value="">店舗（すべて）</option></select></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><select id="data-category" class="form-control"><option value="">カテゴリ（すべて）</option></select></div>
-              <div class="form-group"><select id="data-status" class="form-control"><option value="">状況（すべて）</option><option value="未着手">未着手</option><option value="対応中">対応中</option><option value="対応完了">対応完了</option><option value="保留">保留</option></select></div>
-            </div>
-            <div class="flag-options" style="margin-bottom:8px;">
-              <label class="flag-option important" id="data-important-option" onclick="toggleDataFlag('important')"><input type="checkbox" id="data-important"><span>❗ 重要</span></label>
-              <label class="flag-option trouble" id="data-trouble-option" onclick="toggleDataFlag('trouble')"><input type="checkbox" id="data-trouble"><span>⚡ トラブル</span></label>
-            </div>
-          </div>
-        </div>
-        <div class="scope-toggle">
-          <button class="scope-btn" data-scope="mine" onclick="setDataScope('mine')">自分のデータ</button>
-          <button class="scope-btn active purple" data-scope="all" onclick="setDataScope('all')">全体データ</button>
-        </div>
-        <div class="period-pills">
-          <button class="period-pill" data-period="week">今週</button>
-          <button class="period-pill" data-period="month">今月</button>
-          <button class="period-pill" data-period="year">今年</button>
-          <button class="period-pill" data-period="lastyear">昨年</button>
-          <button class="period-pill active" data-period="all">全期間</button>
-        </div>
-        <div class="stats-toggle" id="stats-toggle" onclick="toggleStatsPanel()">
-          <div class="stats-toggle-left"><span class="material-icons-round">bar_chart</span>統計</div>
-          <span class="material-icons-round toggle-arrow">expand_more</span>
-        </div>
-        <div class="stats-panel" id="stats-panel">
-          <div class="stats-grid">
-            <div class="stat-card" onclick="filterByStatCard('total')"><div class="stat-value" id="data-stat-total">-</div><div class="stat-label">総件数</div></div>
-            <div class="stat-card success" onclick="filterByStatCard('completed')"><div class="stat-value" id="data-stat-completed">-</div><div class="stat-label">完了</div></div>
-            <div class="stat-card danger" onclick="filterByStatCard('important')"><div class="stat-value" id="data-stat-important">-</div><div class="stat-label">❗ 重要</div></div>
-            <div class="stat-card purple" onclick="filterByStatCard('trouble')"><div class="stat-value" id="data-stat-trouble">-</div><div class="stat-label">⚡ トラブル</div></div>
-          </div>
-        </div>
-        <div class="view-tabs">
-          <button class="view-tab active" data-view="list" onclick="setDataView('list')">一覧</button>
-          <button class="view-tab" data-view="chart" onclick="setDataView('chart')">グラフ</button>
-        </div>
+        <div class="data-search-box"><div class="data-search-input"><span class="material-icons-round">search</span><input type="text" id="data-keyword" placeholder="キーワード検索..."><button class="data-filter-toggle" id="data-filter-toggle" onclick="toggleDataFilters()"><span class="material-icons-round">tune</span></button></div><div class="data-filters" id="data-filters"><div class="form-row"><div class="form-group"><select id="data-company" class="form-control"><option value="">会社（すべて）</option></select></div><div class="form-group"><select id="data-store" class="form-control"><option value="">店舗（すべて）</option></select></div></div><div class="form-row"><div class="form-group"><select id="data-category" class="form-control"><option value="">カテゴリ（すべて）</option></select></div><div class="form-group"><select id="data-status" class="form-control"><option value="">状況（すべて）</option><option value="未着手">未着手</option><option value="対応中">対応中</option><option value="対応完了">対応完了</option><option value="保留">保留</option></select></div></div><div class="flag-options" style="margin-bottom:8px;"><label class="flag-option important" id="data-important-option" onclick="toggleDataFlag('important', event)"><input type="checkbox" id="data-important"><span>❗ 重要</span></label><label class="flag-option trouble" id="data-trouble-option" onclick="toggleDataFlag('trouble', event)"><input type="checkbox" id="data-trouble"><span>⚡ トラブル</span></label></div></div></div>
+        <div class="scope-toggle"><button class="scope-btn" data-scope="mine" onclick="setDataScope('mine')">自分のデータ</button><button class="scope-btn active purple" data-scope="all" onclick="setDataScope('all')">全体データ</button></div>
+        <div class="period-pills"><button class="period-pill" data-period="week">今週</button><button class="period-pill" data-period="month">今月</button><button class="period-pill" data-period="year">今年</button><button class="period-pill" data-period="lastyear">昨年</button><button class="period-pill active" data-period="all">全期間</button></div>
+        <div class="stats-toggle" id="stats-toggle" onclick="toggleStatsPanel()"><div class="stats-toggle-left"><span class="material-icons-round">bar_chart</span>統計</div><span class="material-icons-round toggle-arrow">expand_more</span></div>
+        <div class="stats-panel" id="stats-panel"><div class="stats-grid"><div class="stat-card" onclick="filterByStatCard('total')"><div class="stat-value" id="data-stat-total">-</div><div class="stat-label">総件数</div></div><div class="stat-card success" onclick="filterByStatCard('completed')"><div class="stat-value" id="data-stat-completed">-</div><div class="stat-label">完了</div></div><div class="stat-card danger" onclick="filterByStatCard('important')"><div class="stat-value" id="data-stat-important">-</div><div class="stat-label">❗ 重要</div></div><div class="stat-card purple" onclick="filterByStatCard('trouble')"><div class="stat-value" id="data-stat-trouble">-</div><div class="stat-label">⚡ トラブル</div></div></div></div>
+        <div class="view-tabs"><button class="view-tab active" data-view="list" onclick="setDataView('list')">一覧</button><button class="view-tab" data-view="chart" onclick="setDataView('chart')">グラフ</button></div>
         <div class="loading" id="data-loading"><div class="spinner"></div><p>読み込み中...</p></div>
         <div id="data-list-view"><div id="data-results"></div></div>
-        <div id="data-chart-view" style="display:none;">
-          <div class="chart-section"><h3><span class="material-icons-round">business</span>会社別</h3><div id="data-chart-company" class="bar-chart"></div></div>
-          <div class="chart-section"><h3><span class="material-icons-round">store</span>店舗別 TOP10</h3><div id="data-chart-store" class="bar-chart"></div></div>
-          <div class="chart-section"><h3><span class="material-icons-round">category</span>カテゴリ別</h3><div id="data-chart-category" class="bar-chart"></div></div>
-          <div class="chart-section" id="data-chart-user-section"><h3><span class="material-icons-round">person</span>担当者別</h3><div id="data-chart-user" class="bar-chart"></div></div>
-        </div>
+        <div id="data-chart-view" style="display:none;"><div class="chart-section"><h3><span class="material-icons-round">business</span>会社別</h3><div id="data-chart-company" class="bar-chart"></div></div><div class="chart-section"><h3><span class="material-icons-round">store</span>店舗別 TOP10</h3><div id="data-chart-store" class="bar-chart"></div></div><div class="chart-section"><h3><span class="material-icons-round">category</span>カテゴリ別</h3><div id="data-chart-category" class="bar-chart"></div></div><div class="chart-section" id="data-chart-user-section"><h3><span class="material-icons-round">person</span>担当者別</h3><div id="data-chart-user" class="bar-chart"></div></div></div>
       </div>
     </main>
-    <nav class="bottom-nav">
-      <div class="nav-item active" data-page="home"><span class="material-icons-round">home</span>ホーム</div>
-      <div class="nav-item" data-page="input"><span class="material-icons-round">add_circle</span>入力</div>
-      <div class="nav-item" data-page="data"><span class="material-icons-round">analytics</span>データ</div>
-    </nav>
+    <nav class="bottom-nav"><div class="nav-item active" data-page="home"><span class="material-icons-round">home</span>ホーム</div><div class="nav-item" data-page="input"><span class="material-icons-round">add_circle</span>入力</div><div class="nav-item" data-page="data"><span class="material-icons-round">analytics</span>データ</div></nav>
   </div>
   <div class="modal-overlay" id="user-modal"><div class="modal"><div class="modal-header"><h3>ユーザー設定</h3><button class="modal-close" onclick="closeModal('user-modal')"><span class="material-icons-round">close</span></button></div><div class="modal-body"><div class="form-group"><label class="form-label">表示名</label><input type="text" id="user-display-name" class="form-control" placeholder="表示名を入力"></div><div class="form-group"><label class="form-label">メールアドレス</label><input type="text" id="user-email" class="form-control" readonly style="background:var(--slate-100);"></div><div class="form-group"><label class="form-label">カレンダーID <span style="font-size:11px;color:var(--slate-500);font-weight:normal;">空欄は共有カレンダー</span></label><input type="text" id="user-calendar-id" class="form-control" placeholder="例: abc123@group.calendar.google.com"></div><button class="btn btn-primary btn-block" onclick="saveUserSettings()"><span class="material-icons-round">save</span>保存</button><button class="btn btn-danger btn-block" onclick="logout()" style="margin-top:12px;"><span class="material-icons-round">logout</span>ログアウト</button></div></div></div>
   <div class="modal-overlay" id="detail-modal"><div class="modal"><div class="modal-header"><h3 id="modal-title">詳細</h3><button class="modal-close" onclick="closeModal('detail-modal')"><span class="material-icons-round">close</span></button></div><div class="modal-body" id="modal-content"></div></div></div>
   <div class="modal-overlay" id="assign-modal"><div class="modal" style="max-width:400px;"><div class="modal-header" style="background:var(--cyan);color:white;"><h3 style="color:white;"><span class="material-icons-round" style="vertical-align:middle;">person_add</span> 依頼</h3><button class="modal-close" onclick="closeModal('assign-modal')" style="color:white;"><span class="material-icons-round">close</span></button></div><div class="modal-body"><input type="hidden" id="assign-task-id"><div class="form-group"><label class="form-label">依頼先 <span class="required">*</span></label><select id="assign-user" class="form-control"><option value="">メンバーを選択</option></select></div><div class="form-group"><label class="form-label">ひとことメモ</label><input type="text" id="assign-message" class="form-control" placeholder="例: 急ぎでお願いします" maxlength="100"></div><button type="button" class="btn btn-primary btn-block" onclick="submitAssignment()" style="background:var(--cyan);"><span class="material-icons-round">send</span>依頼する</button></div></div></div>
   <div class="toast" id="toast"></div>
   <script>
-// ============================================
-// API設定
-// ============================================
 const API_BASE_URL = 'https://script.google.com/macros/s/AKfycby_aTSNWk067_HVpGGYgfo1alVC0osGx0jrKLPtb10Qn-irXen8k3u-ErsbU2cRIaWJGw/exec';
 const API_KEY = 'densan_apikey_20260127';
 
@@ -522,26 +459,30 @@ async function apiGet(action, params = {}) {
   return result.data;
 }
 
+// [v8.5.3] Bug#4修正: POST化 + GETフォールバック
 async function apiPost(action, data = {}) {
   const url = new URL(API_BASE_URL);
   url.searchParams.set('action', action);
   url.searchParams.set('apiKey', API_KEY);
-  Object.keys(data).forEach(key => {
-    if (data[key] !== undefined && data[key] !== null) {
-      if (typeof data[key] === 'object') {
-        url.searchParams.set(key, JSON.stringify(data[key]));
-      } else {
-        url.searchParams.set(key, data[key]);
+
+  try {
+    const response = await fetch(url.toString(), {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+    return await response.json();
+  } catch (postError) {
+    console.warn('POST failed, falling back to GET:', postError);
+    Object.keys(data).forEach(key => {
+      if (data[key] !== undefined && data[key] !== null) {
+        url.searchParams.set(key, typeof data[key] === 'object' ? JSON.stringify(data[key]) : data[key]);
       }
-    }
-  });
-  const response = await fetch(url.toString(), { method: 'GET', headers: { 'Accept': 'application/json' } });
-  return await response.json();
+    });
+    const response = await fetch(url.toString(), { method: 'GET', headers: { 'Accept': 'application/json' } });
+    return await response.json();
+  }
 }
 
-// ============================================
-// 状態管理
-// ============================================
 const S = {
   masterData: null, currentUser: null, allUsers: [], editingId: null, toastTimer: null,
   quickMemoOpen: false, lastListState: null, isAppInitialized: false,
@@ -553,23 +494,15 @@ const S = {
   dataScope: 'all', dataPeriod: 'all', dataView: 'list', statsOpen: false, filtersOpen: false
 };
 
-// ============================================
-// 初期化
-// ============================================
 document.addEventListener('DOMContentLoaded', () => { checkLogin(); initLoginForm(); });
 
-function checkLogin() {
-  const u = localStorage.getItem('densanUser');
-  if (u) { S.currentUser = JSON.parse(u); showApp(); }
-}
+function checkLogin() { const u = localStorage.getItem('densanUser'); if (u) { S.currentUser = JSON.parse(u); showApp(); } }
 
 function initLoginForm() {
   document.getElementById('login-form').addEventListener('submit', async e => {
     e.preventDefault();
-    const uid = document.getElementById('login-user').value;
-    const pw = document.getElementById('login-password').value;
-    const err = document.getElementById('login-error');
-    const btn = document.getElementById('login-btn');
+    const uid = document.getElementById('login-user').value, pw = document.getElementById('login-password').value;
+    const err = document.getElementById('login-error'), btn = document.getElementById('login-btn');
     btn.disabled = true; err.classList.remove('show');
     try {
       const r = await apiPost('authenticate', { userName: uid, password: pw });
@@ -636,9 +569,6 @@ function initFlagToggles() {
   });
 }
 
-// ============================================
-// プリセット機能
-// ============================================
 function initPresets() {
   const presets = JSON.parse(localStorage.getItem('densanPresets') || '{}');
   for (let i = 1; i <= 3; i++) {
@@ -653,17 +583,11 @@ function applyPreset(n) {
   if (!p || !p.company) { showToast('プリセット' + n + 'は未設定です', 'error'); return; }
   document.getElementById('input-company').value = p.company;
   updateStoreSelect(p.company, document.getElementById('input-store'));
-  setTimeout(() => {
-    document.getElementById('input-store').value = p.store || '';
-    document.getElementById('input-requester').value = p.requester || '';
-    showToast('プリセット' + n + 'を適用', 'success');
-  }, 100);
+  setTimeout(() => { document.getElementById('input-store').value = p.store || ''; document.getElementById('input-requester').value = p.requester || ''; showToast('プリセット' + n + 'を適用', 'success'); }, 100);
 }
 
 function savePreset(n) {
-  const company = document.getElementById('input-company').value;
-  const store = document.getElementById('input-store').value;
-  const requester = document.getElementById('input-requester').value;
+  const company = document.getElementById('input-company').value, store = document.getElementById('input-store').value, requester = document.getElementById('input-requester').value;
   if (!company) { showToast('会社を選択してください', 'error'); return; }
   const presets = JSON.parse(localStorage.getItem('densanPresets') || '{}');
   presets[n] = { company, store, requester };
@@ -671,31 +595,17 @@ function savePreset(n) {
   initPresets(); togglePresetEdit(); showToast('プリセット' + n + 'に保存しました', 'success');
 }
 
-function togglePresetEdit() {
-  document.getElementById('preset-edit-mode').classList.toggle('active');
-  document.getElementById('preset-edit-btn').classList.toggle('active');
-}
+function togglePresetEdit() { document.getElementById('preset-edit-mode').classList.toggle('active'); document.getElementById('preset-edit-btn').classList.toggle('active'); }
 
 function applyQuickPreset(n) {
   const presets = JSON.parse(localStorage.getItem('densanPresets') || '{}'); const p = presets[n];
   if (!p || !p.company) { showToast('プリセット' + n + 'は未設定', 'error'); return; }
   document.getElementById('quick-company').value = p.company;
   updateStoreSelect(p.company, document.getElementById('quick-store'));
-  setTimeout(() => {
-    document.getElementById('quick-store').value = p.store || '';
-    document.getElementById('quick-requester').value = p.requester || '';
-    showToast('プリセット' + n + 'を適用', 'success');
-  }, 100);
+  setTimeout(() => { document.getElementById('quick-store').value = p.store || ''; document.getElementById('quick-requester').value = p.requester || ''; showToast('プリセット' + n + 'を適用', 'success'); }, 100);
 }
 
-// ============================================
-// トグル関数
-// ============================================
-function toggleQuickMemo() {
-  S.quickMemoOpen = !S.quickMemoOpen;
-  document.getElementById('quick-memo-panel').classList.toggle('active', S.quickMemoOpen);
-  document.getElementById('quick-memo-toggle').classList.toggle('open', S.quickMemoOpen);
-}
+function toggleQuickMemo() { S.quickMemoOpen = !S.quickMemoOpen; document.getElementById('quick-memo-panel').classList.toggle('active', S.quickMemoOpen); document.getElementById('quick-memo-toggle').classList.toggle('open', S.quickMemoOpen); }
 
 function toggleScheduleFields(pf) {
   const cb = document.getElementById(pf + '-add-calendar'), f = document.getElementById(pf + '-schedule-fields');
@@ -703,58 +613,24 @@ function toggleScheduleFields(pf) {
     f.classList.add('active');
     const d = document.getElementById(pf + '-scheduled-date'), t = document.getElementById(pf + '-scheduled-time'), e = document.getElementById(pf + '-end-time');
     if (!d.value) d.value = new Date().toISOString().split('T')[0];
-    if (!t.value) {
-      const n = new Date(), h = String(n.getHours()).padStart(2, '0');
-      let m = String(Math.ceil(n.getMinutes() / 15) * 15 % 60).padStart(2, '0'), ah = h;
-      if (n.getMinutes() > 45) ah = String((parseInt(h) + 1) % 24).padStart(2, '0');
-      t.value = ah + ':' + m;
-      if (e) e.value = String((parseInt(ah) + 1) % 24).padStart(2, '0') + ':' + m;
-    }
+    if (!t.value) { const n = new Date(), h = String(n.getHours()).padStart(2, '0'); let m = String(Math.ceil(n.getMinutes() / 15) * 15 % 60).padStart(2, '0'), ah = h; if (n.getMinutes() > 45) ah = String((parseInt(h) + 1) % 24).padStart(2, '0'); t.value = ah + ':' + m; if (e) e.value = String((parseInt(ah) + 1) % 24).padStart(2, '0') + ':' + m; }
   } else f.classList.remove('active');
 }
 
 function toggleQuickAssign() {
-  const cb = document.getElementById('quick-add-assign');
-  const f = document.getElementById('quick-assign-fields');
-  const c = document.getElementById('quick-company');
-  
+  const cb = document.getElementById('quick-add-assign'), f = document.getElementById('quick-assign-fields'), c = document.getElementById('quick-company');
   if (cb.checked) {
     if (c.value === 'プライベート') { cb.checked = false; showToast('プライベートは依頼不可', 'error'); return; }
     f.classList.add('active');
-    
     const s = document.getElementById('quick-assignee');
     s.innerHTML = '<option value="">依頼先を選択</option>';
-    
-    const teamOpt = document.createElement('option');
-    teamOpt.value = 'shared';
-    teamOpt.textContent = '📢 チーム全体に依頼';
-    s.appendChild(teamOpt);
-    
-    const divider = document.createElement('option');
-    divider.disabled = true;
-    divider.textContent = '──────────';
-    s.appendChild(divider);
-    
-    S.allUsers.forEach(u => {
-      if (u.email !== S.currentUser.email) {
-        const o = document.createElement('option');
-        o.value = u.email;
-        o.textContent = u.name;
-        s.appendChild(o);
-      }
-    });
-  } else {
-    f.classList.remove('active');
-    document.getElementById('quick-assignee').value = '';
-    document.getElementById('quick-assign-message').value = '';
-  }
+    const teamOpt = document.createElement('option'); teamOpt.value = 'shared'; teamOpt.textContent = '📢 チーム全体に依頼'; s.appendChild(teamOpt);
+    const divider = document.createElement('option'); divider.disabled = true; divider.textContent = '──────────'; s.appendChild(divider);
+    S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; s.appendChild(o); } });
+  } else { f.classList.remove('active'); document.getElementById('quick-assignee').value = ''; document.getElementById('quick-assign-message').value = ''; }
 }
 
-function toggleAllDay(pf) {
-  const cb = document.getElementById(pf + '-allday'), tw = document.getElementById(pf + '-time-wrapper'), dw = document.getElementById(pf + '-duration-wrapper');
-  if (tw) tw.style.display = cb.checked ? 'none' : '';
-  if (dw) dw.style.display = cb.checked ? 'none' : '';
-}
+function toggleAllDay(pf) { const cb = document.getElementById(pf + '-allday'), tw = document.getElementById(pf + '-time-wrapper'), dw = document.getElementById(pf + '-duration-wrapper'); if (tw) tw.style.display = cb.checked ? 'none' : ''; if (dw) dw.style.display = cb.checked ? 'none' : ''; }
 
 function setQuickDuration(m) {
   const st = document.getElementById('quick-scheduled-time').value;
@@ -780,688 +656,179 @@ function setInputDuration(m) {
 
 function clearInputDuration() { document.querySelectorAll('#input-duration-wrapper .duration-chip').forEach(b => b.classList.remove('active')); }
 
-function toggleSection(s) {
-  S.sectionStates[s] = !S.sectionStates[s];
-  document.getElementById(s + '-content').classList.toggle('open', S.sectionStates[s]);
-  document.getElementById(s + '-toggle').classList.toggle('open', S.sectionStates[s]);
-}
+function toggleSection(s) { S.sectionStates[s] = !S.sectionStates[s]; document.getElementById(s + '-content').classList.toggle('open', S.sectionStates[s]); document.getElementById(s + '-toggle').classList.toggle('open', S.sectionStates[s]); }
 
 function showAllTasks(s) { S.sectionExpanded[s] = true; renderSectionTasks(s, S.sectionData[s], s === 'assigned', s === 'pending', s === 'myrequests'); }
 
-function toggleFlagOption(t) {
+// [v8.5.3] Bug#1修正: event引数追加 + preventDefault
+function toggleFlagOption(t, e) {
+  if (e) e.preventDefault();
   const o = document.getElementById('input-' + t + '-option'), cb = document.getElementById('input-' + t);
   cb.checked = !cb.checked; o.classList.toggle('checked', cb.checked);
 }
 
-function toggleDataFlag(t) {
+function toggleDataFlag(t, e) {
+  if (e) e.preventDefault();
   const o = document.getElementById('data-' + t + '-option'), cb = document.getElementById('data-' + t);
   cb.checked = !cb.checked; o.classList.toggle('checked', cb.checked);
 }
-    // ============================================
-// データ読み込み
-// ============================================
-async function loadAllUsers() {
-  try { const us = await apiGet('getAllUsers', { userEmail: S.currentUser.email }); S.allUsers = us; }
-  catch (error) { console.error('Failed to load users:', error); }
-}
+
+function showToast(m, t = '') { const toast = document.getElementById('toast'); toast.textContent = m; toast.className = 'toast show ' + t; if (S.toastTimer) clearTimeout(S.toastTimer); S.toastTimer = setTimeout(() => toast.classList.remove('show'), 3000); }
+function showUserModal() { closeModal('user-modal'); document.getElementById('user-modal').classList.add('active'); loadUserSettings(); }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+function goToPage(p) { document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); document.querySelector('[data-page="'+p+'"]').classList.add('active'); document.querySelectorAll('.page').forEach(x => x.classList.remove('active')); document.getElementById(p+'-page').classList.add('active'); if (p==='data') loadDataPage(); else if (p==='home') loadHomeTasks(); }
 
 async function loadMasterData() {
-  try { const d = await apiGet('getMasterData', { userEmail: S.currentUser.email }); S.masterData = d; populateSelects(); loadHomeTasks(); }
-  catch (error) { showToast('データ読み込みエラー', 'error'); }
+  try {
+    S.masterData = await apiGet('getMasterData');
+    populateSelects();
+    loadHomeTasks();
+  } catch (e) { showToast('マスターデータ取得エラー', 'error'); }
+}
+
+async function loadAllUsers() {
+  try { S.allUsers = await apiGet('getAllUsers', { userEmail: S.currentUser.email }); } catch (e) { }
+}
+
+async function loadUserSettings() {
+  try {
+    const s = await apiGet('getUserSettings', { userEmail: S.currentUser.email });
+    if (s) { document.getElementById('user-display-name').value = s.name || ''; document.getElementById('user-calendar-id').value = s.calendarId || ''; }
+  } catch (e) { }
+}
+
+async function saveUserSettings() {
+  try {
+    const r = await apiPost('saveUserSettings', { settings: { name: document.getElementById('user-display-name').value, calendarId: document.getElementById('user-calendar-id').value }, userEmail: S.currentUser.email });
+    if (r.success) { S.currentUser.name = document.getElementById('user-display-name').value; localStorage.setItem('densanUser', JSON.stringify(S.currentUser)); document.getElementById('user-name').textContent = S.currentUser.name; closeModal('user-modal'); showToast('設定を保存しました', 'success'); }
+    else showToast(r.message || 'エラー', 'error');
+  } catch (e) { showToast('保存エラー', 'error'); }
 }
 
 function populateSelects() {
-  ['quick-company', 'input-company', 'data-company'].forEach(id => {
+  if (!S.masterData) return;
+  const m = S.masterData;
+  ['input-company', 'quick-company', 'data-company'].forEach(id => {
     const s = document.getElementById(id);
-    if (s && S.masterData.companies) {
-      const fo = s.options[0]; s.innerHTML = ''; s.appendChild(fo);
-      S.masterData.companies.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; s.appendChild(o); });
-    }
+    const v = s.value; s.innerHTML = '<option value="">' + (id.includes('data') ? '会社（すべて）' : id.includes('quick') ? '会社' : '選択') + '</option>';
+    m.companies.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; s.appendChild(o); });
+    const pOpt = document.createElement('option'); pOpt.value = 'プライベート'; pOpt.textContent = '🔒 プライベート'; s.appendChild(pOpt);
+    if (v) s.value = v;
   });
-  ['input-category', 'data-category'].forEach(id => {
-    const s = document.getElementById(id);
-    if (s && S.masterData.categories) {
-      const fo = s.options[0]; s.innerHTML = ''; s.appendChild(fo);
-      S.masterData.categories.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; s.appendChild(o); });
-    }
-  });
-  ['quick', 'input'].forEach(pf => {
-    const cs = document.getElementById(pf + '-company'), ss = document.getElementById(pf + '-store');
-    if (cs && ss) cs.addEventListener('change', () => updateStoreSelect(cs.value, ss));
-  });
+  ['input-company', 'quick-company'].forEach(id => { document.getElementById(id).addEventListener('change', function() { updateStoreSelect(this.value, document.getElementById(id.replace('company', 'store'))); }); });
+  const catSel = document.getElementById('input-category'), dataCat = document.getElementById('data-category');
+  catSel.innerHTML = '<option value="">選択</option>'; dataCat.innerHTML = '<option value="">カテゴリ（すべて）</option>';
+  m.categories.forEach(c => { catSel.innerHTML += '<option value="' + c + '">' + c + '</option>'; dataCat.innerHTML += '<option value="' + c + '">' + c + '</option>'; });
 }
 
-function updateStoreSelect(c, s) {
-  const fo = s.options[0]; s.innerHTML = ''; s.appendChild(fo);
-  if (c && S.masterData.stores && S.masterData.stores[c]) {
-    S.masterData.stores[c].forEach(x => { const o = document.createElement('option'); o.value = x; o.textContent = x; s.appendChild(o); });
+function updateStoreSelect(company, storeSelect) {
+  if (!S.masterData || !storeSelect) return;
+  const v = storeSelect.value;
+  storeSelect.innerHTML = '<option value="">' + (storeSelect.id.includes('data') ? '店舗（すべて）' : '店舗') + '</option>';
+  if (company && S.masterData.stores[company]) {
+    S.masterData.stores[company].forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; storeSelect.appendChild(o); });
   }
+  if (v) storeSelect.value = v;
 }
 
-// ============================================
-// ホームタスク読み込み
-// ============================================
 async function loadHomeTasks() {
   try {
-    const d = await apiGet('getHomeData', { userEmail: S.currentUser.email });
-    
-    S.sectionData.important = d.important;
-    S.sectionData.inprogress = d.inprogress;
-    S.sectionData.pending = d.pending || [];
-    S.sectionData.assigned = d.assigned;
-    S.sectionData.myrequests = d.myRequests || [];
-    S.sectionData.notstarted = d.notstarted;
-    S.sectionData.onhold = d.onhold;
-    
-    document.getElementById('important-count').textContent = d.important.length;
-    renderSectionTasks('important', d.important, false, false, false);
-    
-    document.getElementById('inprogress-count').textContent = d.inprogress.length;
-    renderSectionTasks('inprogress', d.inprogress, false, false, false);
-    
-    document.getElementById('pending-count').textContent = (d.pending || []).length;
-    renderSectionTasks('pending', d.pending || [], false, true, false);
-    
-    const ac = document.getElementById('assigned-count');
-    ac.textContent = d.assigned.length;
-    ac.classList.toggle('has-unread', d.unreadCount > 0);
-    if (d.unreadCount > 0) showAssignmentAlert(d.unreadCount, d.assigned);
-    renderSectionTasks('assigned', d.assigned, true, false, false);
-    
-    document.getElementById('myrequests-count').textContent = (d.myRequests || []).length;
-    renderSectionTasks('myrequests', d.myRequests || [], false, false, true);
-    
-    document.getElementById('notstarted-count').textContent = d.notstarted.length;
-    renderSectionTasks('notstarted', d.notstarted, false, false, false);
-    
-    document.getElementById('onhold-count').textContent = d.onhold.length;
-    renderSectionTasks('onhold', d.onhold, false, false, false);
-    
-    if (d.unreadCount === 0 && d.completedAssignments && d.completedAssignments.length > 0) {
-      showCompletionAlert(d.completedAssignments);
-    }
-    
-    ['important', 'inprogress', 'pending', 'assigned', 'myrequests', 'notstarted', 'onhold'].forEach(x => {
-      if (S.sectionData[x].length > 0 && !S.sectionStates[x]) toggleSection(x);
+    const data = await apiGet('getHomeData', { userEmail: S.currentUser.email });
+    S.sectionData = { important: data.important || [], inprogress: data.inprogress || [], pending: data.pending || [], assigned: data.assigned || [], myrequests: data.myRequests || [], notstarted: data.notstarted || [], onhold: data.onhold || [] };
+    Object.keys(S.sectionData).forEach(k => {
+      const count = S.sectionData[k].length;
+      document.getElementById(k + '-count').textContent = count;
+      const sec = document.getElementById('section-' + k);
+      sec.style.display = count > 0 ? '' : 'none';
+      if (count > 0) { S.sectionExpanded[k] = false; renderSectionTasks(k, S.sectionData[k], k === 'assigned', k === 'pending', k === 'myrequests'); }
     });
-    
-  } catch (error) { showToast('データ読み込みエラー', 'error'); }
+    const uc = data.unreadCount || 0;
+    const ac = document.getElementById('assigned-count');
+    ac.textContent = uc > 0 ? uc + ' / ' + S.sectionData.assigned.length : S.sectionData.assigned.length;
+    ac.classList.toggle('has-unread', uc > 0);
+    if (data.completedAssignments && data.completedAssignments.length > 0) showCompletionConfirmation(data.completedAssignments);
+  } catch (e) { showToast('データ取得エラー', 'error'); }
 }
 
-function renderSectionTasks(s, ts, isA, isPending, isMyRequests) {
-  const c = document.getElementById(s + '-list');
-  const f = document.getElementById(s + '-footer');
-  
-  if (!ts || ts.length === 0) {
-    c.innerHTML = '<div class="empty-state"><span class="material-icons-round">check_circle</span><p>なし</p></div>';
-    f.style.display = 'none';
-    return;
-  }
-  
-  const dc = S.sectionExpanded[s] ? ts.length : S.INITIAL_COUNT;
-  const dt = ts.slice(0, dc);
-  const hm = ts.length > dc;
-  
-  if (isPending) {
-    c.innerHTML = dt.map(t => createPendingTaskRowHTML(t)).join('');
-  } else if (isMyRequests) {
-    c.innerHTML = dt.map(t => createMyRequestTaskRowHTML(t)).join('');
-  } else {
-    c.innerHTML = dt.map(t => createTaskRowHTML(t, isA, false)).join('');
-  }
-  
-  f.style.display = hm ? 'block' : 'none';
-  if (hm) f.querySelector('.show-more-btn').textContent = '残り ' + (ts.length - dc) + ' 件を表示';
+function renderSectionTasks(section, tasks, isAssigned, isPending, isMyRequests) {
+  const list = document.getElementById(section + '-list'), footer = document.getElementById(section + '-footer');
+  const limit = S.sectionExpanded[section] ? tasks.length : S.INITIAL_COUNT;
+  const visible = tasks.slice(0, limit);
+  list.innerHTML = visible.map(t => renderTaskCard(t, isAssigned, isPending, isMyRequests)).join('');
+  if (tasks.length > S.INITIAL_COUNT && !S.sectionExpanded[section]) { footer.style.display = ''; footer.querySelector('.show-more-btn').textContent = '残り ' + (tasks.length - S.INITIAL_COUNT) + ' 件を表示'; }
+  else footer.style.display = 'none';
 }
 
-// ============================================
-// ヘルパー関数
-// ============================================
-function escapeHtml(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+function renderTaskCard(t, isAssigned, isPending, isMyRequests) {
+  const flags = (t.isImportant ? '<span class="task-flag important">❗ 重要</span>' : '') + (t.isTrouble ? '<span class="task-flag trouble">⚡ トラブル</span>' : '');
+  const cls = ['task-row', 'status-' + t.status];
+  if (t.isImportant) cls.push('flag-important');
+  if (t.isTrouble) cls.push('flag-trouble');
+  if (isAssigned && t.isUnread) cls.push('unread-assignment');
+  const meta = [t.company, t.store, t.requester].filter(Boolean).map(v => '<span class="task-row-meta-item"><span class="material-icons-round">business</span>' + v + '</span>').join('');
+  const daysStr = t.daysAgo > 0 ? '<span class="task-row-days' + (t.daysAgo >= 3 ? ' danger' : '') + '">' + t.daysAgo + '日前</span>' : '';
+  let schedule = '';
+  if (t.scheduledDateTime) { const d = new Date(t.scheduledDateTime); const ds = (d.getMonth()+1)+'/'+d.getDate(); const ts = d.getHours() > 0 || d.getMinutes() > 0 ? ' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0') : ''; schedule = '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>'+ds+ts+'</span>'; }
+  let calendar = t.hasCalendar ? '<span class="task-row-schedule" style="color:var(--success);background:var(--success-light);"><span class="material-icons-round">event_available</span>📅</span>' : '';
+  let assignInfo = '', unreadBadge = '';
+  if (isAssigned && t.assignerName) { assignInfo = '<div class="task-row-assigner"><span class="material-icons-round">person</span>' + t.assignerName + 'さんから依頼</div>'; if (t.isUnread) unreadBadge = '<span class="unread-badge">NEW</span>'; }
+  if (isPending) { const ownerInfo = t.ownerName && !t.isMyTask ? '<span class="task-row-owner"><span class="material-icons-round">person</span>' + t.ownerName + '</span>' : ''; const takeBtn = '<button class="task-assign-btn" onclick="event.stopPropagation();takeSharedTask(\'' + t.id + '\')"><span class="material-icons-round">front_hand</span>対応する</button>'; assignInfo = ownerInfo; return '<div class="' + cls.join(' ') + '" onclick="editTask(\'' + t.id + '\')">' + unreadBadge + '<div class="task-row-indicator"></div><div class="task-row-header"><div class="task-row-header-left"><div class="task-row-flags">' + flags + '</div><div class="task-row-meta">' + meta + '</div></div><div class="task-row-status-area"><span class="task-status-badge status-' + t.status + '">' + t.status + '</span>' + daysStr + '</div></div>' + assignInfo + '<div class="task-row-content"><div class="task-row-title">' + (t.request || '(内容なし)') + '</div>' + (t.response ? '<div class="task-row-response"><strong>対応: </strong>' + t.response + '</div>' : '') + '</div><div class="task-row-footer"><div class="task-row-footer-info">' + schedule + calendar + '</div>' + takeBtn + '</div></div>'; }
+  if (isMyRequests && t.assigneeName) { assignInfo = '<span class="task-row-assignee"><span class="material-icons-round">person</span>→ ' + t.assigneeName + '</span>'; }
+  let privateTag = t.isPrivate ? '<span class="task-row-private"><span class="material-icons-round" style="font-size:10px;">lock</span>個人</span>' : '';
+  return '<div class="' + cls.join(' ') + '" onclick="editTask(\'' + t.id + '\')">' + unreadBadge + '<div class="task-row-indicator"></div><div class="task-row-header"><div class="task-row-header-left"><div class="task-row-flags">' + flags + '</div><div class="task-row-meta">' + meta + '</div></div><div class="task-row-status-area"><span class="task-status-badge status-' + t.status + '">' + t.status + '</span>' + daysStr + '</div></div>' + assignInfo + '<div class="task-row-content"><div class="task-row-title">' + (t.request || '(内容なし)') + '</div>' + (t.response ? '<div class="task-row-response"><strong>対応: </strong>' + t.response + '</div>' : '') + '</div><div class="task-row-footer"><div class="task-row-footer-info">' + schedule + calendar + (isMyRequests && t.assigneeName ? assignInfo : '') + privateTag + '</div></div></div>';
 }
 
-function getStatusLabel(s) {
-  switch (s) { case '対応完了': return '完了'; case '対応中': return '対応中'; case '保留': return '保留'; default: return '未着手'; }
+function showCompletionConfirmation(completions) {
+  S.pendingCompletionIds = completions.map(c => c.id);
+  const html = completions.map(c => '<div style="padding:10px;background:var(--success-light);border-radius:var(--radius-sm);margin-bottom:8px;"><div style="font-size:13px;font-weight:600;color:var(--success);margin-bottom:4px;">✅ ' + c.assigneeName + 'さんが対応完了</div><div style="font-size:12px;color:var(--slate-600);">' + (c.company ? c.company + ' ' : '') + (c.store ? c.store : '') + '</div><div style="font-size:13px;color:var(--slate-700);margin-top:4px;">' + (c.request || '') + '</div>' + (c.response ? '<div style="font-size:12px;color:var(--success);margin-top:4px;">対応: ' + c.response + '</div>' : '') + '</div>').join('');
+  document.getElementById('modal-title').textContent = '対応完了の確認';
+  document.getElementById('modal-content').innerHTML = html + '<button class="btn btn-success btn-block" onclick="confirmAllCompletions()" style="margin-top:12px;"><span class="material-icons-round">check</span>すべて確認済み</button>';
+  document.getElementById('detail-modal').classList.add('active');
 }
 
-// ============================================
-// タスクカードHTML生成
-// ============================================
-function createTaskRowHTML(t, isA, isSc) {
-  const cl = ['task-row', 'status-' + (t.status || '未着手')];
-  if (t.isImportant) cl.push('flag-important');
-  if (t.isTrouble) cl.push('flag-trouble');
-  if (t.isUnread) cl.push('unread-assignment');
-  
-  let fl = '';
-  if (t.isImportant || t.isTrouble) {
-    fl = '<div class="task-row-flags">';
-    if (t.isImportant) fl += '<span class="task-flag important">重要</span>';
-    if (t.isTrouble) fl += '<span class="task-flag trouble">トラブル</span>';
-    fl += '</div>';
-  }
-  
-  const sb = '<span class="task-status-badge status-' + (t.status || '未着手') + '">' + getStatusLabel(t.status) + '</span>';
-  
-  let dy = '';
-  if (t.daysAgo !== undefined && t.daysAgo > 0) {
-    dy = '<span class="task-row-days' + (t.daysAgo >= 3 ? ' danger' : '') + '">' + t.daysAgo + '日前</span>';
-  }
-  
-  let mt = '<div class="task-row-meta">';
-  if (t.company) { const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>'; }
-  if (t.store) { const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>'; }
-  if (t.requester) { const rv = t.requester.length > 6 ? t.requester.substring(0, 6) + '…' : t.requester; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.requester) + '"><span class="material-icons-round">person</span>' + escapeHtml(rv) + '</span>'; }
-  mt += '</div>';
-  
-  let ar = '';
-  if (isA && t.assignerName) {
-    ar = '<div class="task-row-assigner"><span class="material-icons-round">person</span>' + escapeHtml(t.assignerName) + 'さんから';
-    if (t.assignMessage) { const am = t.assignMessage.length > 15 ? t.assignMessage.substring(0, 15) + '…' : t.assignMessage; ar += ' - 「' + escapeHtml(am) + '」'; }
-    ar += '</div>';
-  }
-  
-  let rs = '';
-  if (t.response) { const pv = t.response.length > 25 ? t.response.substring(0, 25) + '…' : t.response; rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(pv) + '</div>'; }
-  
-  let fi = '';
-  if (t.scheduledDateTime) { const d = new Date(t.scheduledDateTime); fi += '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + '</span>'; }
-  if (t.assigneeName && !isA) { const an = t.assigneeName.length > 4 ? t.assigneeName.substring(0, 4) + '…' : t.assigneeName; fi += '<span class="task-row-assignee" title="' + escapeHtml(t.assigneeName) + 'さんに依頼中"><span class="material-icons-round">person_add</span>' + escapeHtml(an) + '</span>'; }
-  
-  let ab = '';
-  if (!t.isPrivate && !t.assigneeName && !isA) { ab = '<button class="task-assign-btn" onclick="event.stopPropagation();openAssignModal(\'' + t.id + '\')"><span class="material-icons-round">person_add</span>依頼</button>'; }
-  
-  const ub = t.isUnread ? '<span class="unread-badge">NEW</span>' : '';
-  const ch = isA ? 'openAssignedTask(\'' + t.id + '\')' : 'editTask(\'' + t.id + '\')';
-  
-  return '<div class="' + cl.join(' ') + '" onclick="' + ch + '">' +
-    '<div class="task-row-indicator"></div>' + ub +
-    '<div class="task-row-header"><div class="task-row-header-left">' + fl + mt + '</div><div class="task-row-status-area">' + sb + dy + '</div></div>' + ar +
-    '<div class="task-row-content"><div class="task-row-title">' + (t.request ? escapeHtml(t.request) : '（内容なし）') + '</div>' + rs + '</div>' +
-    '<div class="task-row-footer"><div class="task-row-footer-info">' + fi + '</div>' + ab + '</div></div>';
+async function confirmAllCompletions() {
+  try { const r = await apiPost('confirmTaskCompletions', { taskIds: S.pendingCompletionIds, userEmail: S.currentUser.email }); if (r.success) { closeModal('detail-modal'); showToast('確認しました', 'success'); loadHomeTasks(); } } catch (e) { showToast('エラー', 'error'); }
 }
 
-function createPendingTaskRowHTML(t) {
-  const cl = ['task-row', 'status-' + (t.status || '未着手')];
-  if (t.isImportant) cl.push('flag-important');
-  if (t.isTrouble) cl.push('flag-trouble');
-  
-  let fl = '';
-  if (t.isImportant || t.isTrouble) {
-    fl = '<div class="task-row-flags">';
-    if (t.isImportant) fl += '<span class="task-flag important">重要</span>';
-    if (t.isTrouble) fl += '<span class="task-flag trouble">トラブル</span>';
-    fl += '</div>';
-  }
-  
-  const sb = '<span class="task-status-badge status-' + (t.status || '未着手') + '">' + getStatusLabel(t.status) + '</span>';
-  
-  let dy = '';
-  if (t.daysAgo !== undefined && t.daysAgo > 0) {
-    dy = '<span class="task-row-days' + (t.daysAgo >= 3 ? ' danger' : '') + '">' + t.daysAgo + '日前</span>';
-  }
-  
-  let mt = '<div class="task-row-meta">';
-  if (t.company) { const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>'; }
-  if (t.store) { const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>'; }
-  if (t.requester) { const rv = t.requester.length > 6 ? t.requester.substring(0, 6) + '…' : t.requester; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.requester) + '"><span class="material-icons-round">person</span>' + escapeHtml(rv) + '</span>'; }
-  mt += '</div>';
-  
-  let ow = '';
-  if (t.ownerName) {
-    const displayName = t.isMyTask ? 'あなた' : t.ownerName + 'さん';
-    const ownerStyle = t.isMyTask ? 'color:var(--primary);background:var(--primary-light);' : 'color:var(--green);background:var(--green-light);';
-    ow = '<div class="task-row-owner" style="' + ownerStyle + '"><span class="material-icons-round">campaign</span>' + escapeHtml(displayName) + 'が依頼</div>';
-  }
-  
-  let rs = '';
-  if (t.response) { const pv = t.response.length > 25 ? t.response.substring(0, 25) + '…' : t.response; rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(pv) + '</div>'; }
-  
-  let fi = '';
-  if (t.scheduledDateTime) { const d = new Date(t.scheduledDateTime); fi += '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + '</span>'; }
-  
-  let ab = '';
-  if (!t.isMyTask) {
-    ab = '<button class="task-assign-btn" style="background:#22c55e;" onclick="event.stopPropagation();startHandleTask(\'' + t.id + '\')"><span class="material-icons-round">front_hand</span>対応する</button>';
-  } else {
-    ab = '<button class="task-assign-btn" style="background:var(--slate-500);" onclick="event.stopPropagation();cancelAssignment(\'' + t.id + '\')"><span class="material-icons-round">undo</span>取り下げ</button>';
-  }
-  
-  const ch = 'editTask(\'' + t.id + '\')';
-  
-  return '<div class="' + cl.join(' ') + '" onclick="' + ch + '">' +
-    '<div class="task-row-indicator"></div>' +
-    '<div class="task-row-header"><div class="task-row-header-left">' + fl + mt + '</div><div class="task-row-status-area">' + sb + dy + '</div></div>' +
-    ow +
-    '<div class="task-row-content"><div class="task-row-title">' + (t.request ? escapeHtml(t.request) : '（内容なし）') + '</div>' + rs + '</div>' +
-    '<div class="task-row-footer"><div class="task-row-footer-info">' + fi + '</div>' + ab + '</div></div>';
-}
-
-function createMyRequestTaskRowHTML(t) {
-  const cl = ['task-row', 'status-' + (t.status || '未着手')];
-  if (t.isImportant) cl.push('flag-important');
-  if (t.isTrouble) cl.push('flag-trouble');
-  
-  let fl = '';
-  if (t.isImportant || t.isTrouble) {
-    fl = '<div class="task-row-flags">';
-    if (t.isImportant) fl += '<span class="task-flag important">重要</span>';
-    if (t.isTrouble) fl += '<span class="task-flag trouble">トラブル</span>';
-    fl += '</div>';
-  }
-  
-  const sb = '<span class="task-status-badge status-' + (t.status || '未着手') + '">' + getStatusLabel(t.status) + '</span>';
-  
-  let dy = '';
-  if (t.daysAgo !== undefined && t.daysAgo > 0) {
-    dy = '<span class="task-row-days' + (t.daysAgo >= 3 ? ' danger' : '') + '">' + t.daysAgo + '日前</span>';
-  }
-  
-  let mt = '<div class="task-row-meta">';
-  if (t.company) { const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>'; }
-  if (t.store) { const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>'; }
-  if (t.requester) { const rv = t.requester.length > 6 ? t.requester.substring(0, 6) + '…' : t.requester; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.requester) + '"><span class="material-icons-round">person</span>' + escapeHtml(rv) + '</span>'; }
-  mt += '</div>';
-  
-  let asn = '';
-  if (t.assigneeName) {
-    const isTeamShared = (t.assigneeEmail || '').toLowerCase() === 'shared';
-    const iconClass = isTeamShared ? 'groups' : 'person_add';
-    const displayName = isTeamShared ? 'チーム全体' : t.assigneeName + 'さん';
-    const colorStyle = isTeamShared ? 'color:var(--green);' : 'color:var(--purple);';
-    
-    asn = '<div class="task-row-assigner" style="' + colorStyle + '"><span class="material-icons-round">' + iconClass + '</span>' + escapeHtml(displayName) + 'に依頼中';
-    if (t.assignMessage) { const am = t.assignMessage.length > 15 ? t.assignMessage.substring(0, 15) + '…' : t.assignMessage; asn += ' - 「' + escapeHtml(am) + '」'; }
-    asn += '</div>';
-  }
-  
-  let rs = '';
-  if (t.response) { const pv = t.response.length > 25 ? t.response.substring(0, 25) + '…' : t.response; rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(pv) + '</div>'; }
-  
-  let fi = '';
-  if (t.scheduledDateTime) { const d = new Date(t.scheduledDateTime); fi += '<span class="task-row-schedule"><span class="material-icons-round">schedule</span>' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + '</span>'; }
-  
-  if (t.assignDate) {
-    const ad = new Date(t.assignDate);
-    const isTeamShared = (t.assigneeEmail || '').toLowerCase() === 'shared';
-    const badgeStyle = isTeamShared ? 'background:var(--green-light);color:var(--green);' : 'background:var(--purple-light);color:var(--purple);';
-    fi += '<span class="task-row-assignee" style="' + badgeStyle + '"><span class="material-icons-round">send</span>' + (ad.getMonth() + 1) + '/' + ad.getDate() + '依頼</span>';
-  }
-  
-  const cb = '<button class="task-assign-btn" style="background:var(--slate-500);" onclick="event.stopPropagation();cancelAssignment(\'' + t.id + '\')"><span class="material-icons-round">close</span>解除</button>';
-  
-  const ch = 'editTask(\'' + t.id + '\')';
-  
-  return '<div class="' + cl.join(' ') + '" onclick="' + ch + '">' +
-    '<div class="task-row-indicator"></div>' +
-    '<div class="task-row-header"><div class="task-row-header-left">' + fl + mt + '</div><div class="task-row-status-area">' + sb + dy + '</div></div>' +
-    asn +
-    '<div class="task-row-content"><div class="task-row-title">' + (t.request ? escapeHtml(t.request) : '（内容なし）') + '</div>' + rs + '</div>' +
-    '<div class="task-row-footer"><div class="task-row-footer-info">' + fi + '</div>' + cb + '</div></div>';
-}
-
-async function startHandleTask(id) {
-  if (!confirm('このタスクの対応を開始しますか？\n（あなたに割り当てられます）')) return;
-  
-  try {
-    const r = await apiPost('takeSharedTask', { taskId: id, userEmail: S.currentUser.email });
-    if (r.success) { showToast(r.message, 'success'); loadHomeTasks(); }
-    else { showToast(r.message || '処理に失敗しました', 'error'); }
-  } catch (error) { showToast('エラーが発生しました', 'error'); }
-}
-
-// ============================================
-// 通知・アラート
-// ============================================
-function showCompletionAlert(ts) {
-  const tl = ts.map(t => {
-    const pv = t.request.length > 30 ? t.request.substring(0, 30) + '...' : t.request;
-    return '<div style="padding:12px;background:var(--success-light);border-radius:var(--radius-sm);margin-bottom:8px;border-left:3px solid var(--success);"><div style="font-size:12px;color:var(--success);font-weight:600;">✓ ' + escapeHtml(t.assigneeName) + 'さんが完了</div><div style="font-size:13px;margin-top:4px;">' + escapeHtml(pv) + '</div></div>';
-  }).join('');
-  S.pendingCompletionIds = ts.map(t => t.id);
-  setTimeout(() => {
-    showModal('完了報告', '<div style="padding:8px;"><p style="margin-bottom:16px;color:var(--slate-600);font-size:13px;">依頼したタスクが完了しました</p>' + tl + '<button type="button" class="btn btn-success btn-block" style="margin-top:16px;" id="confirm-completion-btn">確認</button></div>');
-    setTimeout(() => { const b = document.getElementById('confirm-completion-btn'); if (b) b.addEventListener('click', confirmAndCloseCompletions); }, 100);
-  }, 600);
-}
-
-async function confirmAndCloseCompletions() {
-  if (S.pendingCompletionIds.length > 0) {
-    try { await apiPost('confirmTaskCompletions', { taskIds: S.pendingCompletionIds, userEmail: S.currentUser.email }); }
-    catch (error) { console.error('Failed to confirm completions:', error); }
-  }
-  S.pendingCompletionIds = []; closeModal('detail-modal');
-}
-
-function showAssignmentAlert(c, ts) {
-  const ns = ts.filter(t => t.isUnread).map(t => t.assignerName).filter((n, i, a) => a.indexOf(n) === i);
-  const msg = ns.join('さん、') + 'さんから ' + c + '件の依頼';
-  setTimeout(() => {
-    showModal('新しい依頼', '<div style="text-align:center;padding:20px;"><span class="material-icons-round" style="font-size:48px;color:var(--cyan);">mail</span><p style="font-size:14px;margin:16px 0;">' + escapeHtml(msg) + '</p><button class="btn btn-primary" onclick="closeModal(\'detail-modal\');scrollToAssigned();" style="background:var(--cyan);">確認</button></div>');
-  }, 500);
-}
-
-function scrollToAssigned() {
-  const s = document.getElementById('section-assigned');
-  if (s) { s.scrollIntoView({ behavior: 'smooth', block: 'start' }); if (!S.sectionStates.assigned) toggleSection('assigned'); }
-}
-
-// ============================================
-// 依頼機能
-// ============================================
-function openAssignModal(tid) {
-  document.getElementById('assign-task-id').value = tid;
-  const s = document.getElementById('assign-user');
-  s.innerHTML = '<option value="">依頼先を選択</option>';
-  
-  const teamOpt = document.createElement('option');
-  teamOpt.value = 'shared';
-  teamOpt.textContent = '📢 チーム全体に依頼';
-  s.appendChild(teamOpt);
-  
-  const divider = document.createElement('option');
-  divider.disabled = true;
-  divider.textContent = '──────────';
-  s.appendChild(divider);
-  
-  S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; s.appendChild(o); } });
-  document.getElementById('assign-message').value = '';
-  document.getElementById('assign-modal').classList.add('active');
-}
-
-async function submitAssignment() {
-  const tid = document.getElementById('assign-task-id').value;
-  const ae = document.getElementById('assign-user').value;
-  const msg = document.getElementById('assign-message').value;
-  if (!ae) { showToast('依頼先を選択', 'error'); return; }
-  try {
-    const r = await apiPost('assignTask', { taskId: tid, assigneeEmail: ae, message: msg, userEmail: S.currentUser.email });
-    if (r.success) { showToast(r.message, 'success'); closeModal('assign-modal'); loadHomeTasks(); }
-    else showToast(r.message, 'error');
-  } catch (error) { showToast('依頼失敗', 'error'); }
-}
-
-async function cancelAssignment(tid) {
-  if (!confirm('依頼を解除しますか？')) return;
-  try {
-    const r = await apiPost('unassignTask', { taskId: tid, userEmail: S.currentUser.email });
-    if (r.success) {
-      showToast(r.message, 'success');
-      const ai = document.getElementById('input-assign-info'), as = document.getElementById('input-assign-section');
-      if (ai && S.editingId) {
-        ai.classList.remove('show');
-        buildAssigneeSelect(document.getElementById('input-assignee'));
-        document.getElementById('input-assign-message').value = '';
-        as.classList.add('show');
-      }
-      loadHomeTasks();
-    } else showToast(r.message, 'error');
-  } catch (error) { showToast('解除失敗', 'error'); }
-}
-
-async function openAssignedTask(id) {
-  try { await apiPost('markAssignmentRead', { taskId: id, userEmail: S.currentUser.email }); }
-  catch (error) { console.error('Failed to mark as read:', error); }
-  editTask(id);
-}
-
-function buildAssigneeSelect(sel) {
-  sel.innerHTML = '<option value="">依頼先を選択</option>';
-  const teamOpt = document.createElement('option');
-  teamOpt.value = 'shared';
-  teamOpt.textContent = '📢 チーム全体に依頼';
-  sel.appendChild(teamOpt);
-  const divider = document.createElement('option');
-  divider.disabled = true;
-  divider.textContent = '──────────';
-  sel.appendChild(divider);
-  S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; sel.appendChild(o); } });
-}
-
-async function assignFromDetail() {
-  const tid = document.getElementById('edit-id').value;
-  const ae = document.getElementById('input-assignee').value;
-  const msg = document.getElementById('input-assign-message').value;
-  
-  if (!tid) { showToast('先にタスクを保存してください', 'error'); return; }
-  if (!ae) { showToast('依頼先を選択してください', 'error'); return; }
-  
-  try {
-    const taskData = await apiGet('getLogById', { id: tid, userEmail: S.currentUser.email });
-    
-    if (taskData && taskData.isPrivate) {
-      const r = await apiPost('moveToShared', { taskId: tid, assigneeEmail: ae, message: msg, userEmail: S.currentUser.email });
-      if (r.success) { showToast(r.message, 'success'); S.editingId = null; goToHome(); }
-      else { showToast(r.message || '変換に失敗しました', 'error'); }
-    } else {
-      const r = await apiPost('assignTask', { taskId: tid, assigneeEmail: ae, message: msg, userEmail: S.currentUser.email });
-      if (r.success) {
-        showToast(r.message, 'success');
-        document.getElementById('input-assign-section').classList.remove('show');
-        
-        const isTeam = ae.toLowerCase() === 'shared';
-        let un = isTeam ? 'チーム全体' : '';
-        if (!isTeam) S.allUsers.forEach(u => { if (u.email === ae) un = u.name; });
-        
-        const ai = document.getElementById('input-assign-info');
-        ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">' + (isTeam ? 'groups' : 'person_add') + '</span> ' + escapeHtml(un) + (isTeam ? '' : 'さん') + 'に依頼中</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">解除</button></div>';
-        ai.classList.add('show');
-        loadHomeTasks();
-      } else { showToast(r.message || '依頼に失敗しました', 'error'); }
-    }
-  } catch (error) { showToast('エラーが発生しました', 'error'); }
-}
-
-// ============================================
-// クイックメモ送信
-// ============================================
 async function submitQuickMemo(e) {
   e.preventDefault();
   if (S.quickSubmitting) return false;
   S.quickSubmitting = true;
-  const btn = document.querySelector('#quick-form .quick-submit');
-  btn.disabled = true; btn.innerHTML = '<span class="material-icons-round">hourglass_empty</span>登録中...';
-  
-  const data = {
-    company: document.getElementById('quick-company').value,
-    store: document.getElementById('quick-store').value,
-    requester: document.getElementById('quick-requester').value,
-    memo: document.getElementById('quick-memo').value,
-    isImportant: document.getElementById('quick-important').checked,
-    isTrouble: document.getElementById('quick-trouble').checked,
-    scheduledDate: document.getElementById('quick-scheduled-date').value,
-    scheduledTime: document.getElementById('quick-scheduled-time').value,
-    endTime: document.getElementById('quick-end-time').value,
-    location: document.getElementById('quick-location').value,
-    addToCalendar: document.getElementById('quick-add-calendar').checked,
-    isAllDay: document.getElementById('quick-allday').checked,
-    assigneeEmail: document.getElementById('quick-add-assign').checked ? document.getElementById('quick-assignee').value : '',
-    assignMessage: document.getElementById('quick-add-assign').checked ? document.getElementById('quick-assign-message').value : ''
-  };
-  
   try {
-    const r = await apiPost('addQuickMemo', { memoData: data, userEmail: S.currentUser.email });
+    const data = {
+      memoData: {
+        company: document.getElementById('quick-company').value,
+        store: document.getElementById('quick-store').value,
+        requester: document.getElementById('quick-requester').value,
+        memo: document.getElementById('quick-memo').value,
+        isImportant: document.getElementById('quick-important').checked,
+        isTrouble: document.getElementById('quick-trouble').checked,
+        addToCalendar: document.getElementById('quick-add-calendar').checked,
+        scheduledDate: document.getElementById('quick-scheduled-date').value,
+        scheduledTime: document.getElementById('quick-scheduled-time').value,
+        endTime: document.getElementById('quick-end-time').value,
+        isAllDay: document.getElementById('quick-allday').checked,
+        location: document.getElementById('quick-location').value,
+        assigneeEmail: document.getElementById('quick-assignee').value || '',
+        assignMessage: document.getElementById('quick-assign-message').value || ''
+      },
+      userEmail: S.currentUser.email
+    };
+    const r = await apiPost('addQuickMemo', data);
     if (r.success) {
-      showToast(r.message, 'success');
+      showToast(r.message || '登録しました', 'success');
       document.getElementById('quick-form').reset();
-      document.getElementById('quick-schedule-fields').classList.remove('active');
-      document.getElementById('quick-assign-fields').classList.remove('active');
       document.getElementById('quick-important-toggle').classList.remove('active');
       document.getElementById('quick-trouble-toggle').classList.remove('active');
-      document.querySelectorAll('#quick-duration-wrapper .duration-chip').forEach((b, i) => b.classList.toggle('active', i === 1));
+      document.getElementById('quick-schedule-fields').classList.remove('active');
+      document.getElementById('quick-assign-fields').classList.remove('active');
       loadHomeTasks();
-    } else showToast(r.message, 'error');
-  } catch (error) { showToast('登録失敗', 'error'); }
-  finally { S.quickSubmitting = false; btn.disabled = false; btn.innerHTML = '<span class="material-icons-round">add</span>登録'; }
+    } else showToast(r.message || 'エラー', 'error');
+  } catch (err) { showToast('通信エラー', 'error'); }
+  finally { S.quickSubmitting = false; }
   return false;
 }
 
-// ============================================
-// 詳細フォーム送信
-// ============================================
-async function submitDetailForm(e) {
-  e.preventDefault();
-  if (S.detailSubmitting) return false;
-  S.detailSubmitting = true;
-  const btn = document.querySelector('#detail-form button[type="submit"]');
-  btn.disabled = true; btn.innerHTML = '<span class="material-icons-round">hourglass_empty</span>保存中...';
-  
-  const id = document.getElementById('edit-id').value;
-  const data = {
-    date: document.getElementById('input-date').value,
-    status: document.getElementById('input-status').value,
-    company: document.getElementById('input-company').value,
-    store: document.getElementById('input-store').value,
-    requester: document.getElementById('input-requester').value,
-    category: document.getElementById('input-category').value,
-    request: document.getElementById('input-request').value,
-    response: document.getElementById('input-response').value,
-    isImportant: document.getElementById('input-important').checked,
-    isTrouble: document.getElementById('input-trouble').checked,
-    memo: document.getElementById('input-memo').value,
-    timeSpent: document.getElementById('input-time').value,
-    scheduledDate: document.getElementById('input-scheduled-date').value,
-    scheduledTime: document.getElementById('input-scheduled-time').value,
-    endTime: document.getElementById('input-end-time').value,
-    location: document.getElementById('input-location').value,
-    addToCalendar: document.getElementById('input-add-calendar').checked,
-    isAllDay: document.getElementById('input-allday').checked
-  };
-  
-  function rb() { S.detailSubmitting = false; btn.disabled = false; btn.innerHTML = '<span class="material-icons-round">check</span>保存'; }
-  
-  try {
-    let r;
-    if (id) { r = await apiPost('updateLog', { id, logData: data, userEmail: S.currentUser.email }); }
-    else { r = await apiPost('addLog', { logData: data, userEmail: S.currentUser.email }); }
-    rb();
-    if (r.success) { showToast(r.message, 'success'); if (id) { S.editingId = null; goToHome(); } else { clearDetailForm(); goToHome(); } }
-    else showToast(r.message, 'error');
-  } catch (error) { rb(); showToast(id ? '更新失敗' : '登録失敗', 'error'); }
-  return false;
-}
-
-// ============================================
-// タスク編集
-// ============================================
-async function editTask(id) {
-  const tid = String(id);
-  try {
-    const t = await apiGet('getLogById', { id: tid, userEmail: S.currentUser.email });
-    if (t) {
-      if (!t.isOwner) { viewTask(tid); return; }
-      S.editingId = tid;
-      document.getElementById('edit-id').value = tid;
-      if (t.date) document.getElementById('input-date').value = new Date(t.date).toISOString().split('T')[0];
-      document.getElementById('input-status').value = t.status || '未着手';
-      document.querySelectorAll('.status-btn').forEach(b => { b.classList.toggle('active', b.dataset.status === (t.status || '未着手')); });
-      document.getElementById('input-company').value = t.company || '';
-      if (t.company) { updateStoreSelect(t.company, document.getElementById('input-store')); setTimeout(() => document.getElementById('input-store').value = t.store || '', 100); }
-      document.getElementById('input-requester').value = t.requester || '';
-      document.getElementById('input-category').value = t.category || '';
-      document.getElementById('input-request').value = t.request || '';
-      document.getElementById('input-response').value = t.response || '';
-      document.getElementById('input-important').checked = t.isImportant || false;
-      document.getElementById('input-important-option').classList.toggle('checked', t.isImportant);
-      document.getElementById('input-trouble').checked = t.isTrouble || false;
-      document.getElementById('input-trouble-option').classList.toggle('checked', t.isTrouble);
-      document.getElementById('input-memo').value = t.memo || '';
-      document.getElementById('input-time').value = t.timeSpent || '';
-      document.getElementById('input-scheduled-date').value = t.scheduledDate || '';
-      document.getElementById('input-scheduled-time').value = t.scheduledTime || '';
-      document.getElementById('input-location').value = t.location || '';
-      
-      const ai = document.getElementById('input-assign-info');
-      const as = document.getElementById('input-assign-section');
-      const asTitle = document.querySelector('#input-assign-section .assign-section-title');
-      
-      if (t.isAssignee && t.ownerName) {
-        ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">person</span> ' + escapeHtml(t.ownerName) + 'さんから依頼</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">辞退</button></div>' + (t.assignMessage ? '<div style="margin-top:6px;font-size:12px;color:var(--slate-600);">「' + escapeHtml(t.assignMessage) + '」</div>' : '');
-        ai.classList.add('show'); as.classList.remove('show');
-      } else if (t.assigneeName) {
-        const displayName = t.assigneeEmail === 'shared' ? 'チーム全体' : t.assigneeName;
-        ai.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><span><span class="material-icons-round" style="font-size:14px;vertical-align:middle;">' + (t.assigneeEmail === 'shared' ? 'groups' : 'person_add') + '</span> ' + escapeHtml(displayName) + 'に依頼中</span><button type="button" class="btn btn-outline" style="padding:4px 10px;font-size:12px;" onclick="cancelAssignment(\'' + tid + '\')">解除</button></div>';
-        ai.classList.add('show'); as.classList.remove('show');
-      } else {
-        ai.classList.remove('show');
-        as.classList.add('show');
-        
-        if (t.isPrivate && asTitle) { asTitle.innerHTML = '<span class="material-icons-round">swap_horiz</span>全体業務に変換して依頼'; }
-        else if (asTitle) { asTitle.innerHTML = '<span class="material-icons-round">person_add</span>メンバーに依頼'; }
-        
-        buildAssigneeSelect(document.getElementById('input-assignee'));
-        document.getElementById('input-assign-message').value = '';
-      }
-      
-      const ci = document.getElementById('input-calendar-info');
-      if (t.calendarEventId) {
-        ci.classList.add('show');
-        document.getElementById('input-add-calendar').checked = false;
-        document.getElementById('input-add-calendar').parentElement.style.display = 'none';
-        document.getElementById('input-schedule-fields').classList.add('active');
-      } else {
-        ci.classList.remove('show');
-        document.getElementById('input-add-calendar').parentElement.style.display = '';
-        document.getElementById('input-schedule-fields').classList.toggle('active', !!t.scheduledDate);
-      }
-      
-      document.getElementById('delete-btn').style.display = 'block';
-      document.getElementById('back-to-list-btn').style.display = S.lastListState ? 'block' : 'none';
-      goToPage('input');
-    } else showToast('データなし', 'error');
-  } catch (error) { showToast('読み込みエラー', 'error'); }
-}
-
-async function viewTask(id) {
-  const tid = String(id);
-  try {
-    const t = await apiGet('getLogById', { id: tid, userEmail: S.currentUser.email });
-    if (t) {
-      let h = '<div style="padding:8px;">';
-      if (t.isImportant || t.isTrouble) { h += '<div style="display:flex;gap:8px;margin-bottom:12px;">'; if (t.isImportant) h += '<span class="task-flag important">❗ 重要</span>'; if (t.isTrouble) h += '<span class="task-flag trouble">⚡ トラブル</span>'; h += '</div>'; }
-      h += '<div style="margin-bottom:12px;"><div style="font-size:11px;color:var(--slate-500);margin-bottom:2px;">担当者</div><div style="font-size:14px;">' + escapeHtml(t.ownerName) + '</div></div>';
-      h += '<div style="margin-bottom:12px;"><div style="font-size:11px;color:var(--slate-500);margin-bottom:2px;">依頼元</div><div style="font-size:14px;">' + escapeHtml(t.company || '-') + ' ' + escapeHtml(t.store || '') + '</div></div>';
-      if (t.requester) h += '<div style="margin-bottom:12px;"><div style="font-size:11px;color:var(--slate-500);margin-bottom:2px;">依頼者</div><div style="font-size:14px;">' + escapeHtml(t.requester) + '</div></div>';
-      h += '<div style="margin-bottom:12px;"><div style="font-size:11px;color:var(--slate-500);margin-bottom:2px;">依頼内容</div><div style="font-size:14px;white-space:pre-wrap;">' + escapeHtml(t.request || '-') + '</div></div>';
-      h += '<div style="margin-bottom:12px;"><div style="font-size:11px;color:var(--slate-500);margin-bottom:2px;">対応内容</div><div style="font-size:14px;white-space:pre-wrap;">' + escapeHtml(t.response || '-') + '</div></div>';
-      h += '<div style="display:flex;gap:16px;"><div><div style="font-size:11px;color:var(--slate-500);margin-bottom:2px;">状況</div><span class="task-status-badge status-' + t.status + '">' + getStatusLabel(t.status) + '</span></div>';
-      if (t.category) h += '<div><div style="font-size:11px;color:var(--slate-500);margin-bottom:2px;">カテゴリ</div><div style="font-size:14px;">' + escapeHtml(t.category) + '</div></div>';
-      h += '</div></div>';
-      showModal('タスク詳細', h);
-    } else showToast('データなし', 'error');
-  } catch (error) { showToast('読み込みエラー', 'error'); }
-}
-
-// ============================================
-// 削除・カレンダー削除
-// ============================================
-async function confirmDelete() {
-  if (!confirm('削除しますか？')) return;
-  const id = document.getElementById('edit-id').value;
-  if (!id) return;
-  try {
-    const r = await apiPost('deleteLog', { id, userEmail: S.currentUser.email });
-    if (r.success) { showToast(r.message, 'success'); S.editingId = null; goToHome(); }
-    else showToast(r.message, 'error');
-  } catch (error) { showToast('削除失敗', 'error'); }
-}
-
-async function removeCalendarEvent() {
-  const id = document.getElementById('edit-id').value;
-  if (!id) return;
-  if (!confirm('カレンダーから削除しますか？')) return;
-  try {
-    const r = await apiPost('removeCalendarFromTask', { id, userEmail: S.currentUser.email });
-    if (r.success) { showToast(r.message, 'success'); document.getElementById('input-calendar-info').classList.remove('show'); document.getElementById('input-add-calendar').parentElement.style.display = ''; }
-    else showToast(r.message, 'error');
-  } catch (error) { showToast('削除失敗', 'error'); }
-}
-
-// ============================================
-// フォームリセット・ナビゲーション
-// ============================================
 function clearDetailForm() {
   S.editingId = null;
   document.getElementById('edit-id').value = '';
@@ -1472,99 +839,301 @@ function clearDetailForm() {
   document.getElementById('input-important-option').classList.remove('checked');
   document.getElementById('input-trouble-option').classList.remove('checked');
   document.getElementById('input-schedule-fields').classList.remove('active');
-  document.getElementById('input-calendar-info').classList.remove('show');
-  document.getElementById('input-add-calendar').parentElement.style.display = '';
   document.getElementById('input-add-calendar').checked = false;
+  document.getElementById('input-calendar-info').classList.remove('show');
   document.getElementById('input-assign-info').classList.remove('show');
   document.getElementById('input-assign-section').classList.remove('show');
   document.getElementById('delete-btn').style.display = 'none';
   document.getElementById('back-to-list-btn').style.display = 'none';
-  S.lastListState = null;
-  document.querySelectorAll('#input-duration-wrapper .duration-chip').forEach((b, i) => b.classList.toggle('active', i === 1));
 }
 
-function cancelEdit() { S.editingId = null; S.lastListState = null; goToHome(); }
-function backToList() { if (S.lastListState) { document.getElementById('modal-title').textContent = S.lastListState.title; document.getElementById('modal-content').innerHTML = S.lastListState.content; document.getElementById('detail-modal').classList.add('active'); setTimeout(() => { const m = document.querySelector('#detail-modal .modal'); if (m && S.lastListState.scrollTop) m.scrollTop = S.lastListState.scrollTop; }, 50); S.lastListState = null; S.editingId = null; goToPage('home'); } else goToHome(); }
-function goToPage(p) { document.querySelectorAll('.nav-item').forEach(x => x.classList.toggle('active', x.dataset.page === p)); document.querySelectorAll('.page').forEach(x => x.classList.toggle('active', x.id === p + '-page')); }
-function goToHome() { goToPage('home'); loadHomeTasks(); }
+async function editTask(id) {
+  try {
+    const t = await apiGet('getLogById', { id: id, userEmail: S.currentUser.email });
+    if (!t) { showToast('データが見つかりません', 'error'); return; }
+    S.editingId = id;
+    goToPage('input');
+    document.getElementById('edit-id').value = id;
+    document.getElementById('input-date').value = t.date ? t.date.split('T')[0] : '';
+    document.getElementById('input-company').value = t.company || '';
+    updateStoreSelect(t.company, document.getElementById('input-store'));
+    setTimeout(() => { document.getElementById('input-store').value = t.store || ''; }, 100);
+    document.getElementById('input-requester').value = t.requester || '';
+    document.getElementById('input-category').value = t.category || '';
+    document.getElementById('input-request').value = t.request || '';
+    document.getElementById('input-response').value = t.response || '';
+    document.getElementById('input-time').value = t.timeSpent || '';
+    document.getElementById('input-memo').value = t.memo || '';
+    document.getElementById('input-status').value = t.status || '未着手';
+    document.querySelectorAll('.status-btn').forEach(b => b.classList.toggle('active', b.dataset.status === t.status));
+    document.getElementById('input-important').checked = t.isImportant;
+    document.getElementById('input-important-option').classList.toggle('checked', t.isImportant);
+    document.getElementById('input-trouble').checked = t.isTrouble;
+    document.getElementById('input-trouble-option').classList.toggle('checked', t.isTrouble);
+    if (t.calendarEventId) { document.getElementById('input-calendar-info').classList.add('show'); }
+    else { document.getElementById('input-calendar-info').classList.remove('show'); }
+    if (t.scheduledDate) {
+      document.getElementById('input-add-calendar').checked = true;
+      document.getElementById('input-schedule-fields').classList.add('active');
+      document.getElementById('input-scheduled-date').value = t.scheduledDate;
+      document.getElementById('input-scheduled-time').value = t.scheduledTime || '';
+    }
+    document.getElementById('input-location').value = t.location || '';
+    const assignInfo = document.getElementById('input-assign-info');
+    const assignSection = document.getElementById('input-assign-section');
+    if (t.assigneeEmail && t.assigneeEmail !== 'shared') {
+      assignInfo.innerHTML = '<div style="font-size:13px;"><strong>依頼先:</strong> ' + (t.assigneeName || t.assigneeEmail) + '</div>' + (t.assignMessage ? '<div style="font-size:12px;color:var(--slate-600);margin-top:4px;">「' + t.assignMessage + '」</div>' : '') + '<div style="margin-top:8px;"><button type="button" class="btn btn-outline btn-sm" onclick="unassignTaskFromDetail(\'' + id + '\')"><span class="material-icons-round" style="font-size:14px;">person_remove</span>依頼解除</button></div>';
+      assignInfo.classList.add('show');
+      assignSection.classList.remove('show');
+    } else if (t.assigneeEmail === 'shared') {
+      assignInfo.innerHTML = '<div style="font-size:13px;"><strong>📢 チーム全体に依頼中</strong></div>' + (t.assignMessage ? '<div style="font-size:12px;color:var(--slate-600);margin-top:4px;">「' + t.assignMessage + '」</div>' : '') + '<div style="margin-top:8px;"><button type="button" class="btn btn-outline btn-sm" onclick="unassignTaskFromDetail(\'' + id + '\')"><span class="material-icons-round" style="font-size:14px;">person_remove</span>依頼解除</button></div>';
+      assignInfo.classList.add('show');
+      assignSection.classList.remove('show');
+    } else {
+      assignInfo.classList.remove('show');
+      if (!t.isPrivate && t.isOwner) {
+        assignSection.classList.add('show');
+        const sel = document.getElementById('input-assignee');
+        sel.innerHTML = '<option value="">依頼先を選択</option>';
+        const teamOpt = document.createElement('option'); teamOpt.value = 'shared'; teamOpt.textContent = '📢 チーム全体に依頼'; sel.appendChild(teamOpt);
+        const divider = document.createElement('option'); divider.disabled = true; divider.textContent = '──────────'; sel.appendChild(divider);
+        S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; sel.appendChild(o); } });
+      } else if (t.isPrivate) {
+        assignSection.classList.remove('show');
+      } else {
+        assignSection.classList.remove('show');
+      }
+    }
+    document.getElementById('delete-btn').style.display = t.isOwner ? '' : 'none';
+    if (t.isAssignee && !t.isUnread) { }
+    if (t.isAssignee) {
+      try { await apiPost('markAssignmentRead', { taskId: id, userEmail: S.currentUser.email }); } catch(e) { }
+    }
+  } catch (err) { showToast('読み込みエラー: ' + err.message, 'error'); }
+}
 
-// ============================================
-// データページ
-// ============================================
-function toggleDataFilters() { S.filtersOpen = !S.filtersOpen; document.getElementById('data-filters').classList.toggle('active', S.filtersOpen); document.getElementById('data-filter-toggle').classList.toggle('active', S.filtersOpen); }
-function setDataScope(scope) { S.dataScope = scope; document.querySelectorAll('.scope-btn').forEach(b => { b.classList.remove('active', 'purple'); if (b.dataset.scope === scope) { b.classList.add('active'); if (scope === 'all') b.classList.add('purple'); } }); document.getElementById('data-chart-user-section').style.display = scope === 'all' ? 'block' : 'none'; loadDataPage(); }
-function toggleStatsPanel() { S.statsOpen = !S.statsOpen; document.getElementById('stats-panel').classList.toggle('active', S.statsOpen); document.getElementById('stats-toggle').classList.toggle('open', S.statsOpen); }
-function setDataView(view) { S.dataView = view; document.querySelectorAll('.view-tab').forEach(b => b.classList.toggle('active', b.dataset.view === view)); document.getElementById('data-list-view').style.display = view === 'list' ? 'block' : 'none'; document.getElementById('data-chart-view').style.display = view === 'chart' ? 'block' : 'none'; }
-function filterByStatCard(filter) { document.getElementById('data-status').value = filter === 'completed' ? '対応完了' : ''; document.getElementById('data-important').checked = filter === 'important'; document.getElementById('data-important-option').classList.toggle('checked', filter === 'important'); document.getElementById('data-trouble').checked = filter === 'trouble'; document.getElementById('data-trouble-option').classList.toggle('checked', filter === 'trouble'); loadDataPage(); }
+async function submitDetailForm(e) {
+  e.preventDefault();
+  if (S.detailSubmitting) return false;
+  S.detailSubmitting = true;
+  try {
+    const logData = {
+      date: document.getElementById('input-date').value,
+      company: document.getElementById('input-company').value,
+      store: document.getElementById('input-store').value,
+      requester: document.getElementById('input-requester').value,
+      category: document.getElementById('input-category').value,
+      request: document.getElementById('input-request').value,
+      response: document.getElementById('input-response').value,
+      timeSpent: document.getElementById('input-time').value,
+      memo: document.getElementById('input-memo').value,
+      status: document.getElementById('input-status').value,
+      isImportant: document.getElementById('input-important').checked,
+      isTrouble: document.getElementById('input-trouble').checked,
+      addToCalendar: document.getElementById('input-add-calendar').checked,
+      scheduledDate: document.getElementById('input-scheduled-date').value,
+      scheduledTime: document.getElementById('input-scheduled-time').value,
+      endTime: document.getElementById('input-end-time').value,
+      isAllDay: document.getElementById('input-allday').checked,
+      location: document.getElementById('input-location').value
+    };
+    const id = document.getElementById('edit-id').value;
+    let r;
+    if (id) { r = await apiPost('updateLog', { id: id, logData: logData, userEmail: S.currentUser.email }); }
+    else { r = await apiPost('addLog', { logData: logData, userEmail: S.currentUser.email }); }
+    if (r.success) { showToast(r.message || '保存しました', 'success'); clearDetailForm(); goToPage('home'); }
+    else showToast(r.message || 'エラー', 'error');
+  } catch (err) { showToast('保存エラー', 'error'); }
+  finally { S.detailSubmitting = false; }
+  return false;
+}
+
+function confirmDelete() { if (confirm('このタスクを削除しますか？')) deleteLog(); }
+
+async function deleteLog() {
+  const id = document.getElementById('edit-id').value;
+  if (!id) return;
+  try {
+    const r = await apiPost('deleteLog', { id: id, userEmail: S.currentUser.email });
+    if (r.success) { showToast('削除しました', 'success'); clearDetailForm(); goToPage('home'); }
+    else showToast(r.message || 'エラー', 'error');
+  } catch (e) { showToast('削除エラー', 'error'); }
+}
+
+async function removeCalendarEvent() {
+  const id = document.getElementById('edit-id').value;
+  if (!id || !confirm('カレンダーから削除しますか？')) return;
+  try {
+    const r = await apiPost('removeCalendarFromTask', { id: id, userEmail: S.currentUser.email });
+    if (r.success) { document.getElementById('input-calendar-info').classList.remove('show'); showToast('カレンダーから削除しました', 'success'); }
+    else showToast(r.message || 'エラー', 'error');
+  } catch (e) { showToast('エラー', 'error'); }
+}
+
+async function assignFromDetail() {
+  const id = document.getElementById('edit-id').value;
+  const assignee = document.getElementById('input-assignee').value;
+  const msg = document.getElementById('input-assign-message').value;
+  if (!id || !assignee) { showToast('依頼先を選択してください', 'error'); return; }
+  try {
+    const r = await apiPost('assignTask', { taskId: id, assigneeEmail: assignee, message: msg, userEmail: S.currentUser.email });
+    if (r.success) { showToast(r.message || '依頼しました', 'success'); editTask(id); }
+    else showToast(r.message || 'エラー', 'error');
+  } catch (e) { showToast('依頼エラー', 'error'); }
+}
+
+function showAssignModal(taskId) {
+  document.getElementById('assign-task-id').value = taskId;
+  const sel = document.getElementById('assign-user');
+  sel.innerHTML = '<option value="">メンバーを選択</option>';
+  const teamOpt = document.createElement('option'); teamOpt.value = 'shared'; teamOpt.textContent = '📢 チーム全体に依頼'; sel.appendChild(teamOpt);
+  const divider = document.createElement('option'); divider.disabled = true; divider.textContent = '──────────'; sel.appendChild(divider);
+  S.allUsers.forEach(u => { if (u.email !== S.currentUser.email) { const o = document.createElement('option'); o.value = u.email; o.textContent = u.name; sel.appendChild(o); } });
+  document.getElementById('assign-message').value = '';
+  document.getElementById('assign-modal').classList.add('active');
+}
+
+async function submitAssignment() {
+  const taskId = document.getElementById('assign-task-id').value;
+  const assignee = document.getElementById('assign-user').value;
+  const msg = document.getElementById('assign-message').value;
+  if (!assignee) { showToast('依頼先を選択してください', 'error'); return; }
+  try {
+    const r = await apiPost('assignTask', { taskId: taskId, assigneeEmail: assignee, message: msg, userEmail: S.currentUser.email });
+    if (r.success) { closeModal('assign-modal'); showToast(r.message || '依頼しました', 'success'); loadHomeTasks(); }
+    else showToast(r.message || 'エラー', 'error');
+  } catch (e) { showToast('依頼エラー', 'error'); }
+}
+
+async function takeSharedTask(taskId) {
+  if (!confirm('このタスクの対応を開始しますか？')) return;
+  try {
+    const r = await apiPost('takeSharedTask', { taskId: taskId, userEmail: S.currentUser.email });
+    if (r.success) { showToast(r.message || '対応を開始しました', 'success'); loadHomeTasks(); }
+    else showToast(r.message || 'エラー', 'error');
+  } catch (e) { showToast('エラー', 'error'); }
+}
+
+async function unassignTaskFromDetail(taskId) {
+  if (!confirm('依頼を解除しますか？')) return;
+  try {
+    const r = await apiPost('unassignTask', { taskId: taskId, userEmail: S.currentUser.email });
+    if (r.success) { showToast('依頼を解除しました', 'success'); editTask(taskId); }
+    else showToast(r.message || 'エラー', 'error');
+  } catch (e) { showToast('エラー', 'error'); }
+}
+
+function cancelEdit() { clearDetailForm(); goToPage('home'); }
+
+function backToList() { clearDetailForm(); goToPage('data'); }
+
+function setDataScope(scope) {
+  S.dataScope = scope;
+  document.querySelectorAll('.scope-btn').forEach(b => { b.classList.toggle('active', b.dataset.scope === scope); if (scope === 'all') b.classList.toggle('purple', b.dataset.scope === 'all'); });
+  loadDataPage();
+}
+
+function setDataView(view) {
+  S.dataView = view;
+  document.querySelectorAll('.view-tab').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  document.getElementById('data-list-view').style.display = view === 'list' ? '' : 'none';
+  document.getElementById('data-chart-view').style.display = view === 'chart' ? '' : 'none';
+}
+
+function toggleStatsPanel() {
+  S.statsOpen = !S.statsOpen;
+  document.getElementById('stats-panel').classList.toggle('active', S.statsOpen);
+  document.getElementById('stats-toggle').classList.toggle('open', S.statsOpen);
+}
+
+function toggleDataFilters() {
+  S.filtersOpen = !S.filtersOpen;
+  document.getElementById('data-filters').classList.toggle('active', S.filtersOpen);
+  document.getElementById('data-filter-toggle').classList.toggle('active', S.filtersOpen);
+}
+
+function filterByStatCard(type) {
+  if (type === 'completed') document.getElementById('data-status').value = '対応完了';
+  else if (type === 'important') { document.getElementById('data-important').checked = true; document.getElementById('data-important-option').classList.add('checked'); }
+  else if (type === 'trouble') { document.getElementById('data-trouble').checked = true; document.getElementById('data-trouble-option').classList.add('checked'); }
+  if (type !== 'total') { S.filtersOpen = true; document.getElementById('data-filters').classList.add('active'); document.getElementById('data-filter-toggle').classList.add('active'); }
+  loadDataPage();
+}
 
 async function loadDataPage() {
-  const criteria = { keyword: document.getElementById('data-keyword').value, company: document.getElementById('data-company').value, store: document.getElementById('data-store').value, category: document.getElementById('data-category').value, status: document.getElementById('data-status').value, isImportant: document.getElementById('data-important').checked, isTrouble: document.getElementById('data-trouble').checked };
-  document.getElementById('data-loading').classList.add('active');
+  const loading = document.getElementById('data-loading');
+  loading.classList.add('active');
   try {
-    let d;
-    if (S.dataScope === 'mine') { d = await apiGet('getDataPageResults', { period: S.dataPeriod, userEmail: S.currentUser.email, criteria }); }
-    else { d = await apiGet('getAllDataPageResults', { period: S.dataPeriod, criteria }); }
-    document.getElementById('data-loading').classList.remove('active');
-    renderDataStats(d.stats); renderDataResults(d.tasks, S.dataScope === 'all'); renderDataCharts(d.stats, S.dataScope === 'all');
-  } catch (error) { document.getElementById('data-loading').classList.remove('active'); showToast('読み込みエラー', 'error'); }
+    const criteria = {};
+    const company = document.getElementById('data-company').value;
+    const store = document.getElementById('data-store').value;
+    const category = document.getElementById('data-category').value;
+    const status = document.getElementById('data-status').value;
+    const keyword = document.getElementById('data-keyword').value;
+    const isImportant = document.getElementById('data-important').checked;
+    const isTrouble = document.getElementById('data-trouble').checked;
+    if (company) criteria.company = company;
+    if (store) criteria.store = store;
+    if (category) criteria.category = category;
+    if (status) criteria.status = status;
+    if (keyword) criteria.keyword = keyword;
+    if (isImportant) criteria.isImportant = true;
+    if (isTrouble) criteria.isTrouble = true;
+    let data;
+    if (S.dataScope === 'all') {
+      data = await apiGet('getAllDataPageResults', { period: S.dataPeriod, criteria: criteria, userEmail: S.currentUser.email });
+    } else {
+      data = await apiGet('getDataPageResults', { period: S.dataPeriod, userEmail: S.currentUser.email, criteria: criteria });
+    }
+    renderDataResults(data);
+  } catch (e) { showToast('データ取得エラー', 'error'); }
+  finally { loading.classList.remove('active'); }
 }
 
-function renderDataStats(s) { document.getElementById('data-stat-total').textContent = s.total || 0; document.getElementById('data-stat-completed').textContent = s.completed || 0; document.getElementById('data-stat-important').textContent = s.importants || 0; document.getElementById('data-stat-trouble').textContent = s.troubles || 0; }
-
-function renderDataResults(ts, isAll) {
-  const c = document.getElementById('data-results');
-  if (!ts || ts.length === 0) { c.innerHTML = '<div class="empty-state"><span class="material-icons-round">search_off</span><p>データなし</p></div>'; return; }
-  c.innerHTML = '<div class="section"><div class="section-list" style="padding:8px;">' + ts.map(t => {
-    const ch = t.isOwner ? 'editTask(\'' + t.id + '\')' : 'viewTask(\'' + t.id + '\')';
-    const ow = t.ownerName && !t.isOwner ? '<div class="task-row-owner">' + escapeHtml(t.ownerName) + '</div>' : '';
-    const pv = t.isPrivate ? '<span class="task-row-private">プライベート</span>' : '';
-    let mt = '<div class="task-row-meta">';
-    const dt = t.date ? new Date(t.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' }) : '';
-    if (dt) mt += '<span class="task-row-meta-item"><span class="material-icons-round">event</span>' + dt + '</span>';
-    if (t.company) { const cv = t.company.length > 8 ? t.company.substring(0, 8) + '…' : t.company; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.company) + '"><span class="material-icons-round">business</span>' + escapeHtml(cv) + '</span>'; }
-    if (t.store) { const sv = t.store.length > 6 ? t.store.substring(0, 6) + '…' : t.store; mt += '<span class="task-row-meta-item" title="' + escapeHtml(t.store) + '"><span class="material-icons-round">store</span>' + escapeHtml(sv) + '</span>'; }
-    mt += '</div>';
-    let fl = '';
-    if (t.isImportant || t.isTrouble) { fl = '<div class="task-row-flags">'; if (t.isImportant) fl += '<span class="task-flag important">重要</span>'; if (t.isTrouble) fl += '<span class="task-flag trouble">トラブル</span>'; fl += '</div>'; }
-    let rs = ''; if (t.response) { const rv = t.response.length > 40 ? t.response.substring(0, 40) + '…' : t.response; rs = '<div class="task-row-response"><strong>対応:</strong> ' + escapeHtml(rv) + '</div>'; }
-    const cl = ['task-row', 'status-' + (t.status || '未着手')]; if (t.isImportant) cl.push('flag-important'); if (t.isTrouble) cl.push('flag-trouble');
-    return '<div class="' + cl.join(' ') + '" onclick="' + ch + '"><div class="task-row-indicator"></div><div class="task-row-header"><div class="task-row-header-left">' + fl + mt + pv + '</div><div class="task-row-status-area"><span class="task-status-badge status-' + (t.status || '未着手') + '">' + getStatusLabel(t.status) + '</span></div></div><div class="task-row-content"><div class="task-row-title">' + (t.request ? escapeHtml(t.request) : '（内容なし）') + '</div>' + rs + ow + '</div></div>';
-  }).join('') + '</div></div>';
+function renderDataResults(data) {
+  const stats = data.stats;
+  document.getElementById('data-stat-total').textContent = stats.total;
+  document.getElementById('data-stat-completed').textContent = stats.completed;
+  document.getElementById('data-stat-important').textContent = stats.importants;
+  document.getElementById('data-stat-trouble').textContent = stats.troubles;
+  const results = document.getElementById('data-results');
+  if (!data.tasks || data.tasks.length === 0) {
+    results.innerHTML = '<div class="empty-state"><span class="material-icons-round">search_off</span><p>データがありません</p></div>';
+  } else {
+    results.innerHTML = '<div class="section-list">' + data.tasks.map(t => renderDataTaskCard(t)).join('') + '</div>';
+  }
+  renderCharts(stats);
+  document.getElementById('data-chart-user-section').style.display = S.dataScope === 'all' && stats.byUser ? '' : 'none';
 }
 
-function renderDataCharts(s, isAll) { renderBarChart('data-chart-company', s.byCompany); renderBarChart('data-chart-store', s.byStore, 10); renderBarChart('data-chart-category', s.byCategory); if (isAll && s.byUser) renderBarChart('data-chart-user', s.byUser, null, true); }
-
-function renderBarChart(id, data, limit, isPurple) {
-  const c = document.getElementById(id);
-  if (!data || Object.keys(data).length === 0) { c.innerHTML = '<div class="empty-state" style="padding:16px;"><p>データなし</p></div>'; return; }
-  let items = Object.entries(data).sort((a, b) => b[1] - a[1]); if (limit) items = items.slice(0, limit); const max = items[0][1];
-  c.innerHTML = items.map(([k, v]) => '<div class="bar-item"><span class="bar-label">' + escapeHtml(k) + '</span><div class="bar-track"><div class="bar-fill' + (isPurple ? ' purple' : '') + '" style="width:' + Math.round(v / max * 100) + '%"></div></div><span class="bar-value">' + v + '</span></div>').join('');
+function renderDataTaskCard(t) {
+  const flags = (t.isImportant ? '<span class="task-flag important">❗</span>' : '') + (t.isTrouble ? '<span class="task-flag trouble">⚡</span>' : '');
+  const meta = [t.company, t.store].filter(Boolean).map(v => '<span class="task-row-meta-item"><span class="material-icons-round">business</span>' + v + '</span>').join('');
+  let dateStr = '';
+  if (t.date) { const d = new Date(t.date); dateStr = (d.getMonth()+1) + '/' + d.getDate(); }
+  const ownerTag = t.ownerName && S.dataScope === 'all' ? '<span class="task-row-owner"><span class="material-icons-round">person</span>' + t.ownerName + '</span>' : '';
+  const privateTag = t.isPrivate ? '<span class="task-row-private"><span class="material-icons-round" style="font-size:10px;">lock</span>個人</span>' : '';
+  return '<div class="task-row status-' + t.status + (t.isImportant ? ' flag-important' : '') + (t.isTrouble ? ' flag-trouble' : '') + '" onclick="editTask(\'' + t.id + '\');document.getElementById(\'back-to-list-btn\').style.display=\'\';"><div class="task-row-indicator"></div><div class="task-row-header"><div class="task-row-header-left"><div class="task-row-flags">' + flags + '</div><div class="task-row-meta">' + meta + (t.category ? '<span class="task-row-meta-item"><span class="material-icons-round">category</span>' + t.category + '</span>' : '') + '</div></div><div class="task-row-status-area"><span class="task-status-badge status-' + t.status + '">' + t.status + '</span>' + (dateStr ? '<span style="font-size:10px;color:var(--slate-500);">' + dateStr + '</span>' : '') + '</div></div><div class="task-row-content"><div class="task-row-title">' + (t.request || '(内容なし)') + '</div>' + (t.response ? '<div class="task-row-response"><strong>対応: </strong>' + t.response + '</div>' : '') + '</div><div class="task-row-footer"><div class="task-row-footer-info">' + ownerTag + privateTag + '</div></div></div>';
 }
 
-// ============================================
-// ユーザー設定
-// ============================================
-async function showUserModal() {
-  try { const s = await apiGet('getUserSettings', { userEmail: S.currentUser.email }); document.getElementById('user-display-name').value = s.name || S.currentUser.name; document.getElementById('user-calendar-id').value = s.calendarId || ''; }
-  catch (error) { console.error('Failed to load user settings:', error); }
-  document.getElementById('user-modal').classList.add('active');
+function renderCharts(stats) {
+  renderBarChart('data-chart-company', stats.byCompany || {});
+  const storeEntries = Object.entries(stats.byStore || {}).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  renderBarChart('data-chart-store', Object.fromEntries(storeEntries));
+  renderBarChart('data-chart-category', stats.byCategory || {}, true);
+  if (stats.byUser) renderBarChart('data-chart-user', stats.byUser || {});
 }
 
-async function saveUserSettings() {
-  const name = document.getElementById('user-display-name').value, calId = document.getElementById('user-calendar-id').value;
-  try {
-    const r = await apiPost('saveUserSettings', { settings: { name, calendarId: calId }, userEmail: S.currentUser.email });
-    if (r.success) { showToast(r.message, 'success'); if (name) { S.currentUser.name = name; document.getElementById('user-name').textContent = name; localStorage.setItem('densanUser', JSON.stringify(S.currentUser)); } closeModal('user-modal'); }
-    else showToast(r.message, 'error');
-  } catch (error) { showToast('保存失敗', 'error'); }
+function renderBarChart(containerId, data, isPurple) {
+  const container = document.getElementById(containerId);
+  const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+  if (entries.length === 0) { container.innerHTML = '<div class="empty-state"><p>データなし</p></div>'; return; }
+  const max = Math.max(...entries.map(e => e[1]));
+  container.innerHTML = entries.map(([label, value]) => {
+    const pct = max > 0 ? (value / max * 100) : 0;
+    return '<div class="bar-item"><span class="bar-label" title="' + label + '">' + label + '</span><div class="bar-track"><div class="bar-fill' + (isPurple ? ' purple' : '') + '" style="width:' + pct + '%;"></div></div><span class="bar-value">' + value + '</span></div>';
+  }).join('');
 }
-
-// ============================================
-// モーダル・トースト
-// ============================================
-function showModal(t, c) { document.getElementById('modal-title').textContent = t; document.getElementById('modal-content').innerHTML = c; document.getElementById('detail-modal').classList.add('active'); }
-function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-function showToast(m, t) { const e = document.getElementById('toast'); e.textContent = m; e.className = 'toast'; if (t) e.classList.add(t); e.classList.add('show'); if (S.toastTimer) clearTimeout(S.toastTimer); S.toastTimer = setTimeout(() => e.classList.remove('show'), 3000); }
   </script>
 </body>
 </html>
