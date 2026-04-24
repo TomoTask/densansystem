@@ -732,22 +732,76 @@ function updateStoreSelect(company, storeSelect) {
 }
 
 async function loadHomeTasks() {
+  // エラー表示をクリア
+  const existingErr = document.getElementById('home-api-error');
+  if (existingErr) existingErr.remove();
+
   try {
     const data = await apiGet('getHomeData', { userEmail: S.currentUser.email });
-    S.sectionData = { important: data.important || [], inprogress: data.inprogress || [], pending: data.pending || [], assigned: data.assigned || [], myrequests: data.myRequests || [], notstarted: data.notstarted || [], onhold: data.onhold || [] };
+    S.sectionData = {
+      important:  data.important   || [],
+      inprogress: data.inprogress  || [],
+      pending:    data.pending     || [],
+      assigned:   data.assigned    || [],
+      myrequests: data.myRequests  || [],
+      notstarted: data.notstarted  || [],
+      onhold:     data.onhold      || []
+    };
+
+    // 重要・緊急・チーム依頼・依頼系：0件なら非表示
+    const hideWhenEmpty = ['important', 'pending', 'assigned', 'myrequests'];
+    // 対応中・未着手・保留：0件でも表示（空メッセージ）
+    const alwaysShow    = ['inprogress', 'notstarted', 'onhold'];
+
     Object.keys(S.sectionData).forEach(k => {
       const count = S.sectionData[k].length;
       document.getElementById(k + '-count').textContent = count;
       const sec = document.getElementById('section-' + k);
-      sec.style.display = count > 0 ? '' : 'none';
-      if (count > 0) { S.sectionExpanded[k] = false; renderSectionTasks(k, S.sectionData[k], k === 'assigned', k === 'pending', k === 'myrequests'); }
+
+      if (hideWhenEmpty.includes(k)) {
+        sec.style.display = count > 0 ? '' : 'none';
+      } else {
+        sec.style.display = ''; // 常に表示
+      }
+
+      if (count > 0) {
+        S.sectionExpanded[k] = false;
+        renderSectionTasks(k, S.sectionData[k], k === 'assigned', k === 'pending', k === 'myrequests');
+      } else {
+        // 空メッセージ
+        document.getElementById(k + '-list').innerHTML =
+          '<div class="empty-state"><span class="material-icons-round">inbox</span><p>現在ありません</p></div>';
+        document.getElementById(k + '-footer').style.display = 'none';
+      }
     });
+
+    // 未読バッジ
     const uc = data.unreadCount || 0;
     const ac = document.getElementById('assigned-count');
     ac.textContent = uc > 0 ? uc + ' / ' + S.sectionData.assigned.length : S.sectionData.assigned.length;
     ac.classList.toggle('has-unread', uc > 0);
-    if (data.completedAssignments && data.completedAssignments.length > 0) showCompletionConfirmation(data.completedAssignments);
-  } catch (e) { showToast('データ取得エラー', 'error'); }
+
+    if (data.completedAssignments && data.completedAssignments.length > 0) {
+      showCompletionConfirmation(data.completedAssignments);
+    }
+  } catch (e) {
+    // ホーム上部にエラーバナーを表示（トーストだけだと消える）
+    const banner = document.createElement('div');
+    banner.id = 'home-api-error';
+    banner.style.cssText =
+      'background:var(--danger);color:white;padding:12px 16px;border-radius:var(--radius-md);' +
+      'margin-bottom:12px;font-size:13px;display:flex;align-items:center;gap:8px;';
+    banner.innerHTML =
+      '<span class="material-icons-round">error_outline</span>' +
+      'データ取得エラー。通信状態を確認してください。' +
+      '<button onclick="loadHomeTasks()" style="margin-left:auto;background:rgba(255,255,255,0.2);' +
+      'border:none;color:white;padding:4px 10px;border-radius:4px;cursor:pointer;font-family:inherit;">再試行</button>';
+    document.getElementById('home-page').insertBefore(
+      banner,
+      document.getElementById('home-page').firstChild
+    );
+    showToast('データ取得エラー', 'error');
+  }
 }
 
 function renderSectionTasks(section, tasks, isAssigned, isPending, isMyRequests) {
